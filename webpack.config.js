@@ -1,7 +1,11 @@
 const path = require('path');
 const pkg = require('./package.json');
+const nodeExternals = require('webpack-node-externals');
+
 module.exports = {
   entry: "./src/components/Button/Button.jsx",
+  target: "node",
+  externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: "main.js",

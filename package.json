@@ -1,6 +1,6 @@
 {
-  "name": "cm-react-components",
-  "version": "1.0.0",
+  "name": "dancho-button",
+  "version": "1.0.6",
   "description": "Repository for shared react components build atop of Origami and maintained by the C&amp;M team",
   "main": "dist/index.js",
   "scripts": {
@@ -35,6 +35,11 @@
   "dependencies": {
     "@financial-times/o-buttons": "^6.0.19",
     "node-sass": "^5.0.0",
-    "sass-loader": "^10.0.5"
+    "sass-loader": "^10.0.5",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "prop-types": "^15.7.2"
   }
 }
