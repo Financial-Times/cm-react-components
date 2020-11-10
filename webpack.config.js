@@ -1,6 +1,7 @@
 const path = require('path');
 const pkg = require('./package.json');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: "./src/index.js",
@@ -12,6 +13,11 @@ module.exports = {
     library: pkg.name,
     libraryTarget: "commonjs2"
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'index.css'
+    })
+  ],
   module: {
     rules: [
       {
@@ -22,13 +28,10 @@ module.exports = {
         }
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.*css$/,
         use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
+          MiniCssExtractPlugin.loader,
           'css-loader',
-          // Compiles Sass to CSS
           {
             loader: 'sass-loader',
             options: {
@@ -37,22 +40,47 @@ module.exports = {
                 includePaths: [
                   "node_modules",
                   "node_modules/@financial-times"
-                ],
+                ]
               }
             }
           }
         ]
       },
+// {
+//   test: /\.s[ac]ss$/i,
+//   use: [
+//     // Creates `style` nodes from JS strings
+//     'style-loader',
+//     // Translates CSS into CommonJS
+//     'css-loader',
+//     // Compiles Sass to CSS
+//     {
+//       loader: 'sass-loader',
+//       options: {
+//         additionalData: "$o-brand: 'internal';\n$system-code: 'gt';",
+//         sassOptions: {
+//           includePaths: [
+//             "node_modules",
+//             "node_modules/@financial-times"
+//           ],
+//         }
+//       }
+//     }
+//   ]
+// },
       {
         test: /\.(png|jpg|gif)$/i,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 8192
+        use:
+          {
+            loader: 'url-loader',
+            options:
+              {
+                limit: 8192
+              }
           }
-        }
       }
     ]
-  },
+  }
 
-};
+}
+;

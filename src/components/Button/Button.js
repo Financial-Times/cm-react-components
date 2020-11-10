@@ -1,8 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/buttons.scss';
-
 const classNameDefault = 'o-buttons';
 const classNameDefaultPrefix = `${classNameDefault}--`;
 const classNameIcon = `${classNameDefault}-icon`;
