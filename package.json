@@ -1,6 +1,6 @@
 {
-  "name": "dancho-button",
-  "version": "1.0.6",
+  "name": "cm-react-components",
+  "version": "1.0.0",
   "description": "Repository for shared react components build atop of Origami and maintained by the C&amp;M team",
   "main": "dist/index.js",
   "scripts": {

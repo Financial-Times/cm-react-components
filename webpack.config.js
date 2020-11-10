@@ -3,7 +3,7 @@ const pkg = require('./package.json');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: "./src/components/Button/Button.jsx",
+  entry: "./src/index.js",
   target: "node",
   externals: [nodeExternals()],
   output: {
