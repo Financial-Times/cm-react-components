@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 const classNameDefault = 'o-buttons';
@@ -6,7 +6,7 @@ const classNameDefaultPrefix = `${classNameDefault}--`;
 const classNameIcon = `${classNameDefault}-icon`;
 const classNameIconPrefix = `${classNameIcon}--`;
 
-function Button({
+const Button = forwardRef(({
   id,
   children,
   disabled,
@@ -21,7 +21,7 @@ function Button({
   b2c,
   icon,
   title
-}) {
+}, ref) => {
   let buttonClasses = classNameDefault;
 
   // Checking if some of the following props are passed
@@ -77,8 +77,9 @@ function Button({
       {children}
     </button>
   );
-}
+});
 
+Button.displayName = 'Button';
 Button.propTypes = {
   id: PropTypes.oneOfType([
     PropTypes.number,
