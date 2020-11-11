@@ -11,8 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: "bundle.js",
     library: '__MODULE_DEFAULT_EXPORT__',
-    libraryTarget: "window",
-    libraryExport: 'default'
+    libraryTarget: "window"
   },
   plugins: [
     new MiniCssExtractPlugin({
