@@ -6,7 +6,7 @@ const classNameDefaultPrefix = `${classNameDefault}--`;
 const classNameIcon = `${classNameDefault}-icon`;
 const classNameIconPrefix = `${classNameIcon}--`;
 
-const AnotherButton = forwardRef(({
+export const AnotherButton = forwardRef(({
   id,
   children,
   disabled,
@@ -100,4 +100,4 @@ AnotherButton.propTypes = {
   title: PropTypes.string
 };
 
-export default AnotherButton;
+// export default AnotherButton;
