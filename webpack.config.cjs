@@ -9,9 +9,9 @@ module.exports = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "index.js",
-    library: pkg.name,
-    libraryTarget: "commonjs-module",
+    filename: "bundle.js",
+    library: '__MODULE_DEFAULT_EXPORT__',
+    libraryTarget: "window",
     libraryExport: 'default'
   },
   plugins: [

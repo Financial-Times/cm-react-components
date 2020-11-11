@@ -1,3 +1,5 @@
 import './styles/index.scss';
 
-export { default as Button } from './components/Button/Button.js';
+import Button from './components/Button/Button.js';
+
+export { Button };
