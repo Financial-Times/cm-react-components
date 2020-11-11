@@ -1,25 +1,12 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 
 var classNameDefault = 'o-buttons';
 var classNameDefaultPrefix = classNameDefault + '--';
 var classNameIcon = classNameDefault + '-icon';
 var classNameIconPrefix = classNameIcon + '--';
 
-var Button = (0, _react.forwardRef)(function (_ref, ref) {
+var Button = forwardRef(function (_ref, ref) {
   var id = _ref.id,
       children = _ref.children,
       disabled = _ref.disabled,
@@ -76,7 +63,7 @@ var Button = (0, _react.forwardRef)(function (_ref, ref) {
     buttonClasses += ' ' + additionalClassname;
   }
 
-  return _react2.default.createElement(
+  return React.createElement(
     'button',
     {
       id: id,
@@ -94,20 +81,20 @@ var Button = (0, _react.forwardRef)(function (_ref, ref) {
 
 Button.displayName = 'Button';
 Button.propTypes = {
-  id: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
-  children: _propTypes2.default.node,
-  disabled: _propTypes2.default.bool,
-  onClick: _propTypes2.default.func,
-  selected: _propTypes2.default.bool,
-  className: _propTypes2.default.string,
-  primary: _propTypes2.default.bool,
-  secondary: _propTypes2.default.bool,
-  inverse: _propTypes2.default.bool,
-  big: _propTypes2.default.bool,
-  mono: _propTypes2.default.bool,
-  b2c: _propTypes2.default.bool,
-  icon: _propTypes2.default.string,
-  title: _propTypes2.default.string
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  selected: PropTypes.bool,
+  className: PropTypes.string,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  inverse: PropTypes.bool,
+  big: PropTypes.bool,
+  mono: PropTypes.bool,
+  b2c: PropTypes.bool,
+  icon: PropTypes.string,
+  title: PropTypes.string
 };
 
-exports.default = Button;
+export default Button;
