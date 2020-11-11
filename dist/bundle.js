@@ -1,1 +1,17 @@
-window.__MODULE_DEFAULT_EXPORT__=(()=>{"use strict";var o={829:()=>{const o=require("react"),e=require("prop-types");var c="o-buttons",n="".concat(c,"--"),t="".concat(c,"-icon"),r="".concat(t,"--"),a=(0,o.forwardRef)((function(e,a){var i=e.id,s=e.children,l=e.disabled,d=e.onClick,b=e.selected,p=e.className,u=e.primary,m=e.secondary,y=e.inverse,f=e.big,g=e.mono,v=e.b2c,_=e.icon,x=e.title,E=c;return u&&(E+=" ".concat(n,"primary")),m&&(E+=" ".concat(n,"secondary")),y&&(E+=" ".concat(n,"inverse")),f&&(E+=" ".concat(n,"big")),g&&(E+=" ".concat(n,"mono")),v&&(E+=" ".concat(n,"b2c")),_&&(E+=" ".concat(t," ").concat(r).concat(_," "),s||(E+=" ".concat(r,"icon-only"))),p&&(E+=" ".concat(p)),o.createElement("button",{id:i,ref:a,"data-testid":i,className:E,disabled:l,onClick:d,title:x,"aria-selected":b},s)}));a.displayName="Button",a.propTypes={id:e.oneOfType([e.number,e.string]),children:e.node,disabled:e.bool,onClick:e.func,selected:e.bool,className:e.string,primary:e.bool,secondary:e.bool,inverse:e.bool,big:e.bool,mono:e.bool,b2c:e.bool,icon:e.string,title:e.string}}},e={};return function c(n){if(e[n])return e[n].exports;var t=e[n]={exports:{}};return o[n](t,t.exports,c),t.exports}(829)})().default;
+window.__MODULE_DEFAULT_EXPORT__ = (() => {
+  "use strict";
+  var o = {
+    829: () => {
+      require("react");
+      const o = require("prop-types");
+      var r = "o-buttons", t = ("".concat(r, "--"), "".concat(r, "-icon"));
+      "".concat(t, "--");
+      o.oneOfType([o.number, o.string]), o.node, o.bool, o.func, o.bool, o.string, o.bool, o.bool, o.bool, o.bool, o.bool, o.bool, o.string, o.string
+    }
+  }, r = {};
+  return function t(n) {
+    if (r[n]) return r[n].exports;
+    var e = r[n] = { exports: {} };
+    return o[n](e, e.exports, t), e.exports
+  }(829)
+})().default;
