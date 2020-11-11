@@ -9,7 +9,7 @@ module.exports = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "bundle.js",
+    filename: "index.js",
     library: pkg.name,
     libraryTarget: "commonjs-module",
     libraryExport: 'default'
