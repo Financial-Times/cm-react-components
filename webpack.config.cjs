@@ -10,8 +10,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: "bundle.js",
-    library: '__MODULE_DEFAULT_EXPORT__',
-    libraryTarget: "window",
+    library: pkg.name,
+    libraryTarget: "commonjs-module",
     libraryExport: 'default'
   },
   plugins: [
