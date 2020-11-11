@@ -46,28 +46,6 @@ module.exports = {
           }
         ]
       },
-// {
-//   test: /\.s[ac]ss$/i,
-//   use: [
-//     // Creates `style` nodes from JS strings
-//     'style-loader',
-//     // Translates CSS into CommonJS
-//     'css-loader',
-//     // Compiles Sass to CSS
-//     {
-//       loader: 'sass-loader',
-//       options: {
-//         additionalData: "$o-brand: 'internal';\n$system-code: 'gt';",
-//         sassOptions: {
-//           includePaths: [
-//             "node_modules",
-//             "node_modules/@financial-times"
-//           ],
-//         }
-//       }
-//     }
-//   ]
-// },
       {
         test: /\.(png|jpg|gif)$/i,
         use:
