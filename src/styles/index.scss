@@ -1,1 +1,6 @@
-@import 'buttons';
+@import 'normalize';
+@import 'variables';
+
+// Components
+@import 'components/buttons';
+@import 'components/header';

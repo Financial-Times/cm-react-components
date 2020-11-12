@@ -1,4 +1,4 @@
 import './styles/index.scss';
 
-export { default as AnotherComp } from './components/AnotherComp/AnotherComp';
+export { default as Header } from './components/Header/Header';
 export { default as Button } from './components/Button/Button';
