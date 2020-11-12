@@ -48,6 +48,7 @@
   "dependencies": {
     "@financial-times/o-buttons": "^6.0.19",
     "@financial-times/o-header-services": "^4.0.15",
+    "@financial-times/o-layout": "^4.1.13",
     "node-sass": "^5.0.0",
     "react-router-dom": "^5.2.0",
     "sass-loader": "^10.0.5",

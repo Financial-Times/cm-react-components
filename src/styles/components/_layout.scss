@@ -1,0 +1,9 @@
+@import 'o-layout/main';
+
+@include oLayout();
+
+.layout-container {
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
