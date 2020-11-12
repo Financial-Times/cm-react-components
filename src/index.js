@@ -1,9 +1,4 @@
 import './styles/index.scss';
 
-import { Button } from './components/Button/Button.js';
-import { AnotherButton} from './components/AnotherButton/AnotherButton.js';
-
-export {
-  Button,
-  AnotherButton
-};
+export { default as AnotherComp } from './components/AnotherComp/AnotherComp';
+export { default as Button } from './components/Button/Button';
