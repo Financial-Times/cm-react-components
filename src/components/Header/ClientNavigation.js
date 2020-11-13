@@ -20,5 +20,5 @@ export const ClientNavigation = ({ clientId, menuData }) => {
 
 ClientNavigation.propTypes = {
   clientId: PropTypes.string.isRequired,
-  menuData: PropTypes.object
+  menuData: PropTypes.arrayOf(PropTypes.object)
 };

@@ -8,25 +8,19 @@ export const Navigation = ({
   clientName,
   clientId,
   primaryMenuData,
-  menuData
+  clientMenuData
 }) => {
-
-  let menuItems = [];
-  primaryMenuData.primaryMenu.items.forEach(primaryMenuItem => {
-    Object.values(primaryMenuItem.submenu).map(submenu => (
-      menuItems = submenu.items.map(item => (
-          <li key={item.label}>
-            <NavLink
-              aria-current="true"
-              to={item.url}
-            >
-              {item.label}
-            </NavLink>
-          </li>
-        )
-      )
-    ));
-  });
+  let menuItems = primaryMenuData.map(item => (
+      <li key={item.label}>
+        <NavLink
+          aria-current="true"
+          to={item.url}
+        >
+          {item.label}
+        </NavLink>
+      </li>
+    )
+  );
 
   if (clientId && clientName) {
     menuItems.push(
@@ -49,7 +43,7 @@ export const Navigation = ({
           {menuItems}
         </ol>
         {clientName && clientId && (
-          <ClientNavigation clientId={clientId} menuData={menuData} />
+          <ClientNavigation clientId={clientId} menuData={clientMenuData} />
         )}
       </div>
     </nav>
@@ -57,7 +51,7 @@ export const Navigation = ({
 };
 Navigation.propTypes = {
   clientName: PropTypes.string,
-  primaryMenuData: PropTypes.object,
+  primaryMenuData: PropTypes.arrayOf(PropTypes.object),
   clientId: ClientNavigation.propTypes.clientId,
   clientMenuData: ClientNavigation.propTypes.menuData
 };
