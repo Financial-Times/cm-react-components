@@ -19,7 +19,10 @@ export default {
       sourcemap: true
     }
   ],
-  external: Object.keys(packageJson.peerDependencies || {}),
+  external: [
+    Object.keys(packageJson.peerDependencies || {}),
+    /@babel\/runtime/
+  ],
   plugins: [
     peerDepsExternal(),
     postcss({
@@ -37,7 +40,8 @@ export default {
       ]
     }),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      babelHelpers: 'runtime'
     }),
     del({ targets: ['build/*'] })
   ]
