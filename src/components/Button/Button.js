@@ -11,7 +11,6 @@ const Button = forwardRef(({
   children,
   disabled,
   onClick,
-  selected,
   className: additionalClassname,
   primary,
   secondary,
@@ -72,7 +71,6 @@ const Button = forwardRef(({
       disabled={disabled}
       onClick={onClick}
       title={title}
-      aria-selected={selected}
     >
       {children}
     </button>
