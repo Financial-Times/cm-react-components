@@ -1,0 +1,13 @@
+@import 'o-header-services/main';
+
+@include oHeaderServices()
+
+.like-nav-item {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 8px 0;
+  color: $color-font-main-dark;
+  font-weight: 600;
+  text-transform: uppercase;
+}

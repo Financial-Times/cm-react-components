@@ -1,0 +1,56 @@
+{
+  "name": "cm-react-components",
+  "version": "1.0.0",
+  "description": "Repository for shared react components build atop of Origami and maintained by the C&amp;M team",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Financial-Times/cm-react-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Financial-Times/cm-react-components/issues"
+  },
+  "homepage": "https://github.com/Financial-Times/cm-react-components#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@rollup/plugin-babel": "^5.2.1",
+    "install": "^0.13.0",
+    "npm": "^6.14.8",
+    "npm-run-all": "^4.1.5",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "rollup": "^2.33.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^3.1.8"
+  },
+  "dependencies": {
+    "@financial-times/o-buttons": "^6.0.19",
+    "@financial-times/o-footer-services": "^3.2.1",
+    "@financial-times/o-header-services": "^4.0.15",
+    "@financial-times/o-layout": "^4.1.13",
+    "@babel/runtime": "^7.12.5",
+    "node-sass": "^5.0.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
