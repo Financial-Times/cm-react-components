@@ -44,7 +44,8 @@ For more information about Origami's button class names visit [the official docu
 
 - `Header`
 The header is a component which contains also `Navigation` and `ClientNavigation` components.
-`Header` should be wrapped around `<BrowserRouter>`, otherwise it would not work.   
+`Header` should be wrapped around `<BrowserRouter>`, otherwise it would not work.
+  - `isGatsby` (bool) - if `Header` is used in a gatsby project, this prop should be passed, it forces `Navigation` to be rendered with `gatsby` Links instead of `react-dom NavLinks` 
   - `title` (string) - the title of the application for example which would be rendered inside the `header`
   - `clientName` (string) - If we have secondary navigation (`ClientNavigation`) this is used for visualizing the name of the client/user which uses the secondary navigation. This prop goes with the next one `clientId`
   - `clientId` (string) - If we have secondary navigation (`ClientNavigation`) this is used for navigating to the different client routes with this `id`. Used with the previous prop `clientName`

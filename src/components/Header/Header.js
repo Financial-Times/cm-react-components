@@ -8,7 +8,8 @@ const Header = ({
   clientName,
   clientId,
   primaryMenuData,
-  clientMenuData
+  clientMenuData,
+  isGatsby
 }) => (
   <div className="o-layout__header">
     <header className="o-header-services " data-o-component="o-header-services" data-testid="header-component">
@@ -30,6 +31,7 @@ const Header = ({
         clientId={clientId}
         primaryMenuData={primaryMenuData}
         clientMenuData={clientMenuData}
+        isGatsby={isGatsby}
       />
     </header>
   </div>
@@ -41,6 +43,7 @@ Header.propTypes = {
   clientId: PropTypes.string,
   primaryMenuData: Navigation.propTypes.primaryMenuData,
   clientMenuData: Navigation.propTypes.clientMenuData,
+  isGatsby: Navigation.propTypes.isGatsby
 };
 
 export default Header;

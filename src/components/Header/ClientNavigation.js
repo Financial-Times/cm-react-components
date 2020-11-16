@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'gatsby';
 
-export const ClientNavigation = ({ clientId, menuData }) => {
+export const ClientNavigation = ({ clientId, menuData, isGatsby }) => {
   const menuItems = menuData.map(item => (
     <li key={`${item.label}--${item.url}`}>
-      <NavLink aria-current="true" to={`${item.url}/${clientId}`}>{item.label}</NavLink>
+      {
+        isGatsby
+          ? <Link to={`${item.url}/${clientId}`}>{item.label}</Link>
+          : <NavLink to={`${item.url}/${clientId}`}>{item.label}</NavLink>
+      }
     </li>
   ));
 
@@ -19,6 +24,7 @@ export const ClientNavigation = ({ clientId, menuData }) => {
 };
 
 ClientNavigation.propTypes = {
-  clientId: PropTypes.string.isRequired,
-  menuData: PropTypes.arrayOf(PropTypes.object)
+  clientId: PropTypes.string,
+  menuData: PropTypes.arrayOf(PropTypes.object),
+  isGatsby: PropTypes.bool
 };

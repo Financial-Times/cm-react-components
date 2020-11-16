@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'gatsby';
 
 import { ClientNavigation } from './ClientNavigation';
 
@@ -8,16 +9,28 @@ export const Navigation = ({
   clientName,
   clientId,
   primaryMenuData,
-  clientMenuData
+  clientMenuData,
+  isGatsby
 }) => {
   let menuItems = primaryMenuData.map(item => (
       <li key={item.label}>
-        <NavLink
-          aria-current="true"
-          to={item.url}
-        >
-          {item.label}
-        </NavLink>
+        {
+          isGatsby
+            ? (
+              <Link
+                to={item.url}
+              >
+                {item.label}
+              </Link>
+            )
+            : (
+              <NavLink
+                to={item.url}
+              >
+                {item.label}
+              </NavLink>
+            )
+        }
       </li>
     )
   );
@@ -27,7 +40,6 @@ export const Navigation = ({
       <li key={`${clientName}--${clientId}`}>
         <p
           className="like-nav-item"
-          aria-current="true"
         >
           {clientName}
         </p>
@@ -43,7 +55,7 @@ export const Navigation = ({
           {menuItems}
         </ol>
         {clientName && clientId && (
-          <ClientNavigation clientId={clientId} menuData={clientMenuData} />
+          <ClientNavigation clientId={clientId} menuData={clientMenuData} isGatsby={isGatsby} />
         )}
       </div>
     </nav>
@@ -52,6 +64,7 @@ export const Navigation = ({
 Navigation.propTypes = {
   clientName: PropTypes.string,
   primaryMenuData: PropTypes.arrayOf(PropTypes.object),
+  isGatsby: PropTypes.bool,
   clientId: ClientNavigation.propTypes.clientId,
   clientMenuData: ClientNavigation.propTypes.menuData
 };
