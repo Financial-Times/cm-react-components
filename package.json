@@ -46,13 +46,11 @@
     "@financial-times/o-footer-services": "^3.2.1",
     "@financial-times/o-header-services": "^4.0.15",
     "@financial-times/o-layout": "^4.1.13",
-    "gatsby": "^2.20.5",
     "node-sass": "^5.0.0",
     "react-router-dom": "^5.2.0"
   },
   "peerDependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "gatsby": "2.20.5"
+    "react-dom": "^17.0.1"
   }
 }

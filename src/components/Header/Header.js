@@ -5,11 +5,11 @@ import { Navigation } from './Navigation';
 
 const Header = ({
   title,
-  clientName,
-  clientId,
+  name,
+  id,
   primaryMenuData,
   clientMenuData,
-  isGatsby
+  renderProp
 }) => (
   <div className="o-layout__header">
     <header className="o-header-services " data-o-component="o-header-services" data-testid="header-component">
@@ -27,11 +27,11 @@ const Header = ({
         </div>
       </div>
       <Navigation
-        clientName={clientName}
-        clientId={clientId}
+        name={name}
+        id={id}
         primaryMenuData={primaryMenuData}
         clientMenuData={clientMenuData}
-        isGatsby={isGatsby}
+        renderProp={renderProp}
       />
     </header>
   </div>
@@ -39,11 +39,11 @@ const Header = ({
 
 Header.propTypes = {
   title: PropTypes.string,
-  clientName: PropTypes.string,
-  clientId: PropTypes.string,
+  name: PropTypes.string,
+  id: PropTypes.string,
   primaryMenuData: Navigation.propTypes.primaryMenuData,
-  clientMenuData: Navigation.propTypes.clientMenuData,
-  isGatsby: Navigation.propTypes.isGatsby
+  secondaryMenuData: Navigation.propTypes.secondaryMenuData,
+  renderProp: Navigation.propTypes.renderProp
 };
 
 export default Header;

@@ -1,47 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { Link } from 'gatsby';
 
 import { ClientNavigation } from './ClientNavigation';
 
 export const Navigation = ({
-  clientName,
-  clientId,
+  name,
+  id,
   primaryMenuData,
-  clientMenuData,
-  isGatsby
+  secondaryMenuData,
+  renderProp
 }) => {
   let menuItems = primaryMenuData.map(item => (
       <li key={item.label}>
-        {
-          isGatsby
-            ? (
-              <Link
-                to={item.url}
-              >
-                {item.label}
-              </Link>
-            )
-            : (
-              <NavLink
-                to={item.url}
-              >
-                {item.label}
-              </NavLink>
-            )
-        }
+        {renderProp(item.url, item.label)}
       </li>
     )
   );
 
-  if (clientId && clientName) {
+  if (id && name) {
     menuItems.push(
-      <li key={`${clientName}--${clientId}`}>
+      <li key={`${name}--${id}`}>
         <p
           className="like-nav-item"
         >
-          {clientName}
+          {name}
         </p>
       </li>
     );
@@ -54,17 +36,17 @@ export const Navigation = ({
             aria-label="Ancestor sections" data-testid="secondary-nav">
           {menuItems}
         </ol>
-        {clientName && clientId && (
-          <ClientNavigation clientId={clientId} menuData={clientMenuData} isGatsby={isGatsby} />
+        {name && id && (
+          <ClientNavigation id={id} menuData={secondaryMenuData} renderProp={renderProp} />
         )}
       </div>
     </nav>
   );
 };
 Navigation.propTypes = {
-  clientName: PropTypes.string,
+  name: PropTypes.string,
   primaryMenuData: PropTypes.arrayOf(PropTypes.object),
-  isGatsby: PropTypes.bool,
-  clientId: ClientNavigation.propTypes.clientId,
-  clientMenuData: ClientNavigation.propTypes.menuData
+  renderProp: PropTypes.func.isRequired,
+  id: ClientNavigation.propTypes.id,
+  secondaryMenuData: ClientNavigation.propTypes.menuData
 };
