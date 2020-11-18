@@ -44,10 +44,11 @@ For more information about Origami's button class names visit [the official docu
 
 - `Header`
 The header is a component which contains also `Navigation` and `ClientNavigation` components.
-`Header` should be wrapped around `<BrowserRouter>`, otherwise it would not work.   
+`Header` should be wrapped around `<BrowserRouter>`, otherwise it would not work.
+  - `renderProp` (function) - a function which should return the Child component inside every `li` of the `Navigation`, e.g: `NavLink` or `Link` from `react-router-dom` or `Link` from `gatsby-link` 
   - `title` (string) - the title of the application for example which would be rendered inside the `header`
-  - `clientName` (string) - If we have secondary navigation (`ClientNavigation`) this is used for visualizing the name of the client/user which uses the secondary navigation. This prop goes with the next one `clientId`
-  - `clientId` (string) - If we have secondary navigation (`ClientNavigation`) this is used for navigating to the different client routes with this `id`. Used with the previous prop `clientName`
+  - `name` (string) - If we have secondary navigation (`ClientNavigation`) this is used for visualizing the name of the client/user which uses the secondary navigation. This prop goes with the next one `id`
+  - `id` (string) - If we have secondary navigation (`ClientNavigation`) this is used for navigating to the different client routes with this `id`. Used with the previous prop `name`
   - `primaryMenuData` (array) - an array of objects which contains the different application routes for the main navigation (`Navigation`), e.g.:
   
       ```
@@ -61,7 +62,7 @@ The header is a component which contains also `Navigation` and `ClientNavigation
           url: '/main-route-2'
     ];
     ```
-  - `clientMenuData` (array) - an array of objects which contains the different application routes for the main navigation (`Navigation`), e.g.:
+  - `secondaryMenuData` (array) - an array of objects which contains the different application routes for the main navigation (`Navigation`), e.g.:
   
       ```
     [

@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
-export const ClientNavigation = ({ clientId, menuData }) => {
+export const ClientNavigation = ({ id, menuData, renderProp }) => {
   const menuItems = menuData.map(item => (
     <li key={`${item.label}--${item.url}`}>
-      <NavLink aria-current="true" to={`${item.url}/${clientId}`}>{item.label}</NavLink>
+      {renderProp(`${item.url}/${id}`, item.label, id)}
     </li>
   ));
 
@@ -19,6 +18,7 @@ export const ClientNavigation = ({ clientId, menuData }) => {
 };
 
 ClientNavigation.propTypes = {
-  clientId: PropTypes.string.isRequired,
-  menuData: PropTypes.arrayOf(PropTypes.object)
+  id: PropTypes.string,
+  menuData: PropTypes.arrayOf(PropTypes.object),
+  renderProp: PropTypes.func.isRequired
 };
