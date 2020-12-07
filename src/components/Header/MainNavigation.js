@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MainNavigation = ({
+export const MainNavigation = ({
   menuData,
   renderProp
 }) => {
@@ -25,6 +25,3 @@ MainNavigation.propTypes = {
   menuData: PropTypes.arrayOf(PropTypes.object),
   renderProp: PropTypes.func
 };
-
-export default MainNavigation;
-

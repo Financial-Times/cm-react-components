@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { SecondaryNavigation } from './SecondaryNavigation';
-import MainNavigation from './MainNavigation';
+import { MainNavigation } from './MainNavigation';
 
 const Header = ({
   title,
