@@ -12,7 +12,7 @@ export const SecondaryNavigation = ({
 }) => {
   let menuItems = menuData.map(item => (
       <li key={item.label}>
-        {renderProp(item.url, item.label)}
+        {renderProp(item)}
       </li>
     )
   );
@@ -45,8 +45,8 @@ export const SecondaryNavigation = ({
 };
 SecondaryNavigation.propTypes = {
   name: PropTypes.string,
-  primaryMenuData: PropTypes.arrayOf(PropTypes.object),
+  menuData: PropTypes.arrayOf(PropTypes.object),
   renderProp: PropTypes.func.isRequired,
   id: ClientNavigation.propTypes.id,
-  secondaryMenuData: ClientNavigation.propTypes.menuData
+  clientMenuData: ClientNavigation.propTypes.menuData
 };

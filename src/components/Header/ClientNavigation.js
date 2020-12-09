@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const ClientNavigation = ({ id, menuData, renderProp }) => {
   const menuItems = menuData.map(item => (
     <li key={`${item.label}--${item.url}`}>
-      {renderProp(`${item.url}/${id}`, item.label, id)}
+      {renderProp(item, id)}
     </li>
   ));
 

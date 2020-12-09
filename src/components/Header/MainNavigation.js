@@ -7,7 +7,7 @@ export const MainNavigation = ({
 }) => {
   const menuItems = menuData.map(item => (
       <li key={item.label}>
-        {renderProp(item.url, item.label)}
+        {renderProp(item)}
       </li>
     )
   );
