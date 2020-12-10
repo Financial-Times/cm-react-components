@@ -49,7 +49,7 @@ The header is a component which contains also `Navigation` and `ClientNavigation
   - `title` (string) - the title of the application for example which would be rendered inside the `header`
   - `name` (string) - If we have secondary navigation (`ClientNavigation`) this is used for visualizing the name of the client/user which uses the secondary navigation. This prop goes with the next one `id`
   - `id` (string) - If we have secondary navigation (`ClientNavigation`) this is used for navigating to the different client routes with this `id`. Used with the previous prop `name`
-  - `primaryMenuData` (array) - an array of objects which contains the different application routes for the main navigation (`Navigation`), e.g.:
+  - `mainMenuData` (array) - an array of objects which contains the different application routes for the main navigation (`MainNavigation`), e.g.:
   
       ```
     [
@@ -62,7 +62,20 @@ The header is a component which contains also `Navigation` and `ClientNavigation
           url: '/main-route-2'
     ];
     ```
-  - `secondaryMenuData` (array) - an array of objects which contains the different application routes for the main navigation (`Navigation`), e.g.:
+  - `secondaryMenuData` (array) - an array of objects which contains the different application routes for the secondary navigation (`SecondaryNavigation`), e.g.:
+  
+      ```
+    [
+        {
+          label: 'Secondary route label',
+          url: '/secondary-route'
+        },
+        {
+          label: 'Secondary route label 2',
+          url: '/secondary-route-2'
+    ];
+    ```
+  - `clientMenuData` (array) - an array of objects which contains the different application routes for the client navigation (`ClientNavigation`), e.g.:
   
       ```
     [

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Navigation } from './Navigation';
+import { SecondaryNavigation } from './SecondaryNavigation';
+import { MainNavigation } from './MainNavigation';
 
 const Header = ({
   title,
   name,
   id,
-  primaryMenuData,
+  mainMenuData,
+  secondaryMenuData,
   clientMenuData,
   renderProp
 }) => (
@@ -26,13 +28,19 @@ const Header = ({
           <a className="o-header-services__product-name" href="/">{title}</a>
         </div>
       </div>
-      <Navigation
-        name={name}
-        id={id}
-        primaryMenuData={primaryMenuData}
-        clientMenuData={clientMenuData}
+      <MainNavigation
+        menuData={mainMenuData}
         renderProp={renderProp}
       />
+      {secondaryMenuData && secondaryMenuData.length > 0 && (
+        <SecondaryNavigation
+          name={name}
+          id={id}
+          menuData={secondaryMenuData}
+          clientMenuData={clientMenuData}
+          renderProp={renderProp}
+        />
+      )}
     </header>
   </div>
 );
@@ -41,9 +49,10 @@ Header.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
-  primaryMenuData: Navigation.propTypes.primaryMenuData,
-  secondaryMenuData: Navigation.propTypes.secondaryMenuData,
-  renderProp: Navigation.propTypes.renderProp
+  mainMenuData: MainNavigation.propTypes.menuData,
+  secondaryMenuData: SecondaryNavigation.propTypes.menuData,
+  clientMenuData: SecondaryNavigation.propTypes.clientMenuData,
+  renderProp: SecondaryNavigation.propTypes.renderProp
 };
 
 export default Header;

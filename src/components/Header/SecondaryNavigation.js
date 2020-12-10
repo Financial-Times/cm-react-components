@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import { ClientNavigation } from './ClientNavigation';
 
-export const Navigation = ({
+export const SecondaryNavigation = ({
   name,
   id,
-  primaryMenuData,
-  secondaryMenuData,
+  menuData,
+  clientMenuData,
   renderProp
 }) => {
-  let menuItems = primaryMenuData.map(item => (
+  let menuItems = menuData.map(item => (
       <li key={item.label}>
-        {renderProp(item.url, item.label)}
+        {renderProp(item)}
       </li>
     )
   );
@@ -37,16 +37,16 @@ export const Navigation = ({
           {menuItems}
         </ol>
         {name && id && (
-          <ClientNavigation id={id} menuData={secondaryMenuData} renderProp={renderProp} />
+          <ClientNavigation id={id} menuData={clientMenuData} renderProp={renderProp} />
         )}
       </div>
     </nav>
   );
 };
-Navigation.propTypes = {
+SecondaryNavigation.propTypes = {
   name: PropTypes.string,
-  primaryMenuData: PropTypes.arrayOf(PropTypes.object),
+  menuData: PropTypes.arrayOf(PropTypes.object),
   renderProp: PropTypes.func.isRequired,
   id: ClientNavigation.propTypes.id,
-  secondaryMenuData: ClientNavigation.propTypes.menuData
+  clientMenuData: ClientNavigation.propTypes.menuData
 };
