@@ -60,6 +60,7 @@ The header is a component which contains also `Navigation` and `ClientNavigation
         {
           label: 'Main route label 2',
           url: '/main-route-2'
+        }
     ];
     ```
   - `secondaryMenuData` (array) - an array of objects which contains the different application routes for the secondary navigation (`SecondaryNavigation`), e.g.:
@@ -73,6 +74,7 @@ The header is a component which contains also `Navigation` and `ClientNavigation
         {
           label: 'Secondary route label 2',
           url: '/secondary-route-2'
+        }
     ];
     ```
   - `clientMenuData` (array) - an array of objects which contains the different application routes for the client navigation (`ClientNavigation`), e.g.:
@@ -86,6 +88,7 @@ The header is a component which contains also `Navigation` and `ClientNavigation
         {
           label: 'Client route label 2',
           url: '/client-route-2'
+        }
     ];
     ```
     
@@ -107,6 +110,107 @@ The header is a component which contains also `Navigation` and `ClientNavigation
       {
         label: 'http://link-number-2.com/',
         text: 'Text for link #2'
+      }
     ];
     ```
+    
+- `CheckInput`
+  - `isToggle` (boolean) - if this prop is passed the origami's checkbox is rendered as a toggle button
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the checkbox
+  - `small` (boolean) - this is an origami prop which would append `origami's small classname` to the checkbox
+  - `disabled` (boolean) - if this prop is passed, the checkbox would be disabled and it cannot be checked/unchecked
+  - `checked` (boolean) - a prop which indicates the value of the checkbox - checked/unchecked
+  - `onChange` (function) - a callback function which would handle the change of the checkbox
+  - `label` (string) - a label which would be rendered next to the checkbox
   
+For more information about Origami's checkbox class names visit [the official documentation of Origami checkbox components.](https://registry.origami.ft.com/components/o-forms@8.4.1#demo-checkboxes)
+
+- `FormsField`
+  - `children` (string/node) - `children` passed to the `FormsField` in order to render a form field inside the wrapper 
+  - `containerTag` (string) - One of `label` or `div` - the wrapper tag used for `FormsField` component
+  - `title` (string) - if it is passed a title with `titlePromp` and `titleProps` is rendered before the form field
+  - `titlePrompt` (string/node) - additional text rendered under the `title` - in order the prompt to be rendered, `title` should be passed
+  - `titleProps` (object) - additional title props which could be passed for the title (`verticalCenter`, `shrink`)
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `FormsField`
+  - `inline` (boolean) - this is an origami prop which would append `origami's inline classname` to the `FormsField`
+  - `optional` (boolean) - this is an origami prop which would append `origami's optional classname` to the `FormsField`
+  - `inverse` (boolean) - this is an origami prop which would append `origami's inverse classname` to the `FormsField`
+
+For more information about Origami's additional class names visit [the official documentation of Origami forms components.](https://registry.origami.ft.com/components/o-forms)
+
+- `RadioInput`
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `RadioInput`
+  - `small` (boolean) - this is an origami prop which would append `origami's small classname` to the `RadioInput`
+  - `inline` (boolean) - this is an origami prop which would append `origami's inline classname` to the `RadioInput`
+  - `disabled` (boolean) - if this prop is passed, the `RadioInput` would be disabled and it cannot be checked/unchecked
+  - `isRounded` (boolean) - if this prop is passed the origami's `RadioInput` is rendered rounded
+  - `options` (array) - an array of objects with different options for the radio button, e.g:
+    
+      ```
+    [
+        {
+          name: 'Option 1',
+          value: 'option1'
+        },
+        {
+          label: 'Option 2',
+          url: 'option2'
+        }
+    ];
+    ```
+
+  - `name` (string) - a name attribute of the radio inputs
+  - `onChange` (function) - a callback function which would handle the change of the `RadioInput`
+  - `selectedValue` (string) - the current selected value of all options
+  
+For more information about Origami's radio input class names visit [the official documentation of Origami forms components.](https://registry.origami.ft.com/components/o-forms@8.4.1#demo-box-styled-radio-inputs)
+
+- `SelectBox`
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `SelectBox`
+  - `small` (boolean) - this is an origami prop which would append `origami's small classname` to the `SelectBox`
+  - `hasError` (boolean) - indicates if the `SelectBox` has an error and shows the `errorMessage`
+  - `errorMessage` (string) - if `hasError` is true, then this message is shown
+  - `primary` (boolean) - this is an origami prop which would append `origami's primary classname` to the `SelectBox`
+  - `isTouched` (boolean) - indicates if the `SelectBox` has been touched or not
+  - `disabled` (boolean) - if this prop is passed, the `SelectBox` would be disabled and it options cannot be selected
+  - `selectedValue` (string) - the current selected value of all options
+  - `onChange` (function) - a callback function which would handle the change of the `SelectBox`
+  - `placeholderOptions` (object) - object which contains the placeholder's value and name, which are needed a option as a placeholder to be rendered
+  - `options` (array) - an array of objects containing the options which are rendered inside the `SelectBox`, e.g.:
+      
+      ```
+    [
+        {
+          name: 'Option 1',
+          value: 'option1',
+          id: 'id1',
+          type: 'type1',
+          disabled: true
+        },
+        {
+          name: 'Option 2',
+          value: 'option2',
+          id: 'id2',
+          type: 'type2',
+          disabled: false
+        }
+    ];
+    ```
+    
+For more information about Origami's select box class names visit [the official documentation of Origami forms components.](https://registry.origami.ft.com/components/o-forms@8.4.1#demo-select-boxes)
+
+    
+- `TextInput`
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `TextInput`
+  - `small` (boolean) - this is an origami prop which would append `origami's small classname` to the `TextInput`
+  - `disabled` (boolean) - if this prop is passed, the `TextInput` would be disabled and it cannot be checked/unchecked
+  - `inputType` (string) - the type of the input (default value is `text`), one of `text`, `password`, `email`, `number`, `textarea`
+  - `onChange` (function) - a callback function which would handle the change of the `TextInput`
+  - `onChange` (function) - a callback function which would handle the blur of the `TextInput`
+  - `onBlur` (function) - a callback function which would handle the `keyDown event` of the `TextInput`
+  - `hasError` (boolean) - indicates if the `TextInput` has an error and shows the `errorMessage`
+  - `errorMessage` (string) - if `hasError` is true, then this message is shown
+  - `isTouched` (boolean) - indicates if the `TextInput` has been touched or not
+  - `rows` - (number) - the rows count in case the `inputType` is `textarea` (defaults to 4)
+  
+For more information about Origami's text input/area class names visit [the official documentation of Origami forms components.](https://registry.origami.ft.com/components/o-forms@8.4.1#demo-text-input)
