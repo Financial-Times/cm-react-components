@@ -1,0 +1,27 @@
+@import 'o-forms/main';
+
+@include oForms();
+
+.o-forms-input--invalid {
+  input,
+  textarea {
+    border: 1px solid $color-error;
+  }
+}
+
+// Checkbox
+.o-forms-input .checkbox {
+  margin: 0;
+}
+
+.o-forms-input__label,
+.o-forms-input--radio-round {
+  .o-forms-input__label {
+    position: relative;
+  }
+}
+
+// RadioInput
+.o-forms-input--radio-box__container {
+  position: relative;
+}
