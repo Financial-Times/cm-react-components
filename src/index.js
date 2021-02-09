@@ -11,3 +11,6 @@ export { default as FormsField } from './components/Forms/FormsField';
 export { default as RadioInput } from './components/Forms/RadioInput';
 export { default as SelectBox } from './components/Forms/SelectBox';
 export { default as TextInput } from './components/Forms/TextInput';
+
+export { default as Tooltip } from './components/Tooltip/Tooltip';
+export { useTooltip } from './utils/useTooltip';

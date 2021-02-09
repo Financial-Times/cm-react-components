@@ -18,7 +18,7 @@ export const MainNavigation = ({
         {menuItems}
       </ul>
     </nav>
-  )
+  );
 };
 
 MainNavigation.propTypes = {

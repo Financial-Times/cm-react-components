@@ -10,7 +10,7 @@ export const SecondaryNavigation = ({
   clientMenuData,
   renderProp
 }) => {
-  let menuItems = menuData.map(item => (
+  const menuItems = menuData.map(item => (
       <li key={item.label}>
         {renderProp(item)}
       </li>
