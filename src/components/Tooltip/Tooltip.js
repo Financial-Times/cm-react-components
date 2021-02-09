@@ -3,17 +3,6 @@ import PropTypes from 'prop-types';
 
 const ARROW_WIDTH_PX = 12;
 
-// 1. `Tooltip` should be used with parent container with class `with-tooltip`
-//    and `parentContainerRef` should be passed to `useTooltip` hook
-//    in order to be correctly vertical positioned, e.g:
-//    <div ref={parentContainerRef} className="with-tooltip">
-//      <button ref={elementRef} onClick={clickHandler}>Tooltip</Button>
-//      <Tooltip />
-//    </div>
-// 2. `elementRef` (see example above) should be passed to `useTooltip` hook
-//    in order Tooltip to be correctly horizontal positioned
-// 3. If the "tooltiped" element (`button` in the example above) is a react component
-//    then it should be transformed to forwardRef (see Button.jsx)
 const Tooltip = ({
   isVisible = false,
   top = 0,

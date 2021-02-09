@@ -1,0 +1,21 @@
+@import 'o-tooltip/main';
+
+@include oTooltip();
+
+.with-tooltip {
+  position: relative;
+
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.o-tooltip {
+  display: block;
+  visibility: hidden;
+  transform: translate(50px);
+}
+
+.o-tooltip.visible {
+  visibility: visible;
+}
