@@ -214,3 +214,39 @@ For more information about Origami's select box class names visit [the official 
   - `rows` - (number) - the rows count in case the `inputType` is `textarea` (defaults to 4)
   
 For more information about Origami's text input/area class names visit [the official documentation of Origami forms components.](https://registry.origami.ft.com/components/o-forms@8.4.1#demo-text-input)
+
+
+- `Tooltip`
+  - `useTooltip` hook should be imported as well
+1. `Tooltip` should be used with parent container with class `with-tooltip`
+   and `parentContainerRef` should be passed to `useTooltip` hook
+   in order to be correctly vertical positioned, e.g:
+   
+   ```
+   <div ref={parentContainerRef} className="with-tooltip">
+     <button ref={elementRef} onClick={clickHandler}>Tooltip</Button>
+     <Tooltip />
+   </div>
+   ```
+2. `elementRef` (see example above) should be passed to `useTooltip` hook
+   in order Tooltip to be correctly horizontal positioned
+3. If the "tooltiped" element (`button` in the example above) is a react component
+   then it should be transformed to forwardRef (see Button.jsx)
+   
+  - `Tooltip` props
+    - `isVisible` (bool) - indicates if `Tooltip` is visible or not (returned from `useTooltip`)
+    - `top` (number) - top position of the `Tooltip` (returned from `useTooltip`)
+    - `left` (number) - left position of the `Tooltip` (returned from `useTooltip`)
+    - `children` (string/node) - content rendered inside the Tooltip
+    - `close` (function) - a callback used for closing the `Tooltip` (returned from `useTooltip`)
+    
+  - `useTooltip` receives 3 arguments
+    - `initialState` (bool) - the initial visual state of the `Tooltip`
+    - `containerRef` (ref) - a ref to the container of the tooltip (it should have class `with-tooltip`)
+    - `elementRef` (ref) - a ref to the element which shows the `Tooltip`
+  - and returns:
+    - `isVisible` (bool) - visual state of the `Tooltip`
+    - `top` (number) - top position of the `Tooltip`
+    - `left` (number) - left position of the `Tooltip`
+    - `hideTooltip` (func) - a callback used to close the `Tooltip`
+    - `showTooltip` (func) - a callback used to open the `Tooltip`

@@ -37,7 +37,7 @@ const Footer = ({ links }) => {
 };
 
 Footer.propTypes = {
-  legalPrivacyLinks: PropTypes.array
+  links: PropTypes.array
 };
 
 export default Footer;
