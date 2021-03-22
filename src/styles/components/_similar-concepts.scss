@@ -1,0 +1,31 @@
+.similar-concepts-list {
+  width: 200px;
+  font-size: 14px;
+
+  .title {
+    font-weight: 500;
+  }
+
+  .concepts {
+    margin: 5px 10px 15px;
+
+    .single-concept {
+      padding: 3px 0;
+
+      span {
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 0.25ex solid;
+        color: $color-link-main;
+        border-bottom-color: $color-link-secondary;
+        text-decoration-color: $color-link-secondary;
+
+        &:hover {
+          color: $color-link-hover;
+          border-bottom-color: $color-link-hover-secondary;
+          text-decoration-color: $color-link-hover-secondary;
+        }
+      }
+    }
+  }
+}

@@ -13,9 +13,19 @@ $color-background-main-light: #ffffff;
 $color-background-main-dark: #134d40;
 $color-background-type-label: #ba67c8;
 
+$color-lines-main: #e8e8e8;
+$color-lines-connector: #cacaca;
+$color-lines-connector-primary: #358790;
+
 $color-border: #979797;
 
 $color-link-main: #0d7680;
 $color-link-hover: #08474d;
 $color-link-secondary: #cfe4e6;
 $color-link-hover-secondary: #9ec8cc;
+
+// Breakpoints
+$breakpoint-large: 1024px;
+$breakpoint-medium: 767px;
+$breakpoint-small: 600px;
+$breakpoint-x-small: 480px;

@@ -1,0 +1,16 @@
+@import 'o-loading/main';
+
+@include oLoading();
+
+.o-loading--extra-large {
+  width: 108px;
+  height: 108px;
+  border-width: 10px;
+}
+
+.loader-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}

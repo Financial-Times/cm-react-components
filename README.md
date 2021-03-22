@@ -250,3 +250,5 @@ For more information about Origami's text input/area class names visit [the offi
     - `left` (number) - left position of the `Tooltip`
     - `hideTooltip` (func) - a callback used to close the `Tooltip`
     - `showTooltip` (func) - a callback used to open the `Tooltip`
+
+// TODO: Add documentation for all newly exported components 
