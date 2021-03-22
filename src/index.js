@@ -36,3 +36,4 @@ export { useInput } from './utils/hooks/useInput';
 export { useExpression } from './utils/hooks/useExpression';
 export { usePagination } from './utils/hooks/usePagination';
 export { useTooltip } from './utils/hooks/useTooltip';
+export { useFetch } from './utils/hooks/useFetch';
