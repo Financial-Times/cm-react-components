@@ -51,8 +51,12 @@ const LogicFilterBubble = ({
         <button className="as-icon add-line" title="Add a new line" onClick={addNewLine}>
           <span className="plus" />
         </button>
-        <button className="as-icon add" title="Add new group" onClick={addAGroup} />
-        <button className="as-icon insert" title="Insert in a group" onClick={insertInAGroup} />
+        <button className="as-icon add" title="Add new group" onClick={addAGroup}>
+          <span className="download" />
+        </button>
+        <button className="as-icon insert" title="Insert in a group" onClick={insertInAGroup}>
+          <span className="upload" />
+        </button>
       </div>
       <button className="as-icon delete" title="Remove this group" onClick={removeGroup}>
         <span className="trash" />

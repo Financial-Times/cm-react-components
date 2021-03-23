@@ -251,4 +251,153 @@ For more information about Origami's text input/area class names visit [the offi
     - `hideTooltip` (func) - a callback used to close the `Tooltip`
     - `showTooltip` (func) - a callback used to open the `Tooltip`
 
-// TODO: Add documentation for all newly exported components 
+- `Loader`
+  - `size` (string) - one of the following strings ('mini', 'small', 'medium', 'large', 'extra-large') - specifies size of the Loader
+  - `theme` (string) - one of the following string ('dark', 'light') - specifies the theme/color of the loader
+  
+- `LoaderScreen` - renders a screen with dark themed extra large Loader in the center
+
+- `Bubble`
+A wrapper of the so called Bubbles in Combined content search
+  - `primary` (bool) - if it is true, a primary class is appended (similar to Origami's approach)
+  - `filter` (bool) - if the Bubble wrapper is going to be used as `FilterBubble` or `PreviewBubble`
+  - `children` (string/node) - `children` could be passed to the `Bubble` in order to fill the content inside it 
+
+- `FilterBubble`
+A Bubble with `SelectBox` and `CustomAutocomplete`/`TextInput` 
+  - `value` (string) - the current value of the `TextInput` 
+  - `onChange` (func) - the change handler for the `TextInput` 
+  - `initialInputValue` (string) - initial value of the `TextInput` 
+  - `dropdownOptions` (array) - options for the `SelectBox`
+  - `autocompleteId` (string/number) - an id for the `CustomAutocomplete`
+  - `autocompleteOptions` (array) - the options for the `CustomAutocomplete`
+  - `autocompleteFinish` (func) - a callback invoked on `CustomAutocomplete` finish
+  - `autocompleteChange` (func) - a callback invoked on `CustomAutocomplete` change
+
+- `LogicFilterBubble`
+A Bubble with logic buttons inside it - AND/OR, Add, Insert, Delete
+  - `expressionValue` (object) - object containing `id` and `logic` of the current expression 
+  - `onChange` (func) - change handler for the `RadioInput` (AND/OR filter)
+  - `addNewFilter` (func) - a callback invoked on "Add new filter" button click
+  - `deleteExpression` (func) - a callback invoked on "Delete group" button click
+  - `insertExpression` (func) - a callback invoked on "Insert" button click
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `LogicFilterBubble`
+
+- `PreviewBubble`
+A Bubble which is just showing the concept type and the concept and optionally Edit/Show similar concepts/Delete button
+  - `type` (string) - the concept type
+  - `value` (string) - the concept value
+  - `primary` (bool) - if the `Bubble` wrapper should be `primary` or not
+  - `actions` (object) - object with actions callbacks `edit` and `delete` for t
+  - `children` (string/node)
+  - `narrower` (array) - an array with narrower concepts to show in `SimilarConcept` tooltip
+  - `related` (array) - an array with related concepts to show in `SimilarConcept` tooltip
+  - `onConceptClick` (func) - a callback invoked on Similar concept click
+  
+- `Hint`
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `Hint`
+  - `children` (string/node) - `children` could be passed to the `Hint` in order to fill the content inside it 
+
+- `HintConcepts`
+A `Hint` with info about the different concept types
+
+- `HintLogicGroup`
+A `Hint` with info about the different operations
+
+- `ExpressionGroup`
+  - `expression` (object) - an expression/query rendered into this `ExpressionGroup` using the different `Bubble`s, e.g:
+  ```
+  {
+      id: 1,
+      type: 'expression',
+      logic: 'and',
+      operands: []
+  }
+  ```
+  - `onChange` (func) - a callback invoked on change of concept type
+  - `isFirst` (bool) - indicates if the `ExpressionGroup` is first of its kind
+  - `currentId` (number) - the current id used in the different `ExpressionGroup`s
+  - `increaseId` (func) - a callback invoked to increase the `currentId`
+  - `dropdownOptions` (array) - dropdown options used inside `FilterBubble`
+  - `withHint` (bool) - indicates if the `ExpressionGroup` should have hint for using
+  
+- `PreviewFilterExpression`
+Renders an expression in preview mode
+  - `expression` (object) - an expression/query rendered into this `ExpressionGroup` using `PreviewBubble`, e.g:
+  ```
+  {
+      id: 1,
+      type: 'expression',
+      logic: 'and',
+      operands: []
+  }
+  ```
+  
+- `Teaser`
+  - `className` (string) - an additional class name can be passed from the parent and styles of this class would be applied to the `Teaser`
+  - `imageSrc` (string) - the source of the image rendered inside the `Teaser`
+  - `topic` (string) - the topic rendered inside the `Teaser`
+  - `heading` (string) - the heading rendered inside the `Teaser`
+  - `content` (string) - the content rendered inside the `Teaser`
+  - `linkUrl` (string) - if `linkUrl` is passed the whole teaser is rendered as link and leads to the actual article in `ft.com`
+
+- `ArticlesTeasers`
+  - `date` (string) - a date rendered to every group of articles
+  - `articles` (array) - the articles rendered in this group 
+  
+- `TimePeriod`
+  - `isEditable` (bool) - if the time filter is editable or in preview mode
+  - `from` (number/string) - the start date of the period
+  - `to` (number/string) - the end date of the period
+  - `onChange` (func) - a callback invoked on change of the period
+  - `embargoPeriod` (bool) - indicates if embargoPeriod checkbox is checked
+  - `setEmbargoPeriod` (func) - a change handler for the embargoPeriod checkbox
+  
+- `FeedPreview`
+  - `expression` (object) - an expression/query rendered into this `ExpressionGroup` using `PreviewBubble`, e.g:
+  ```
+  {
+      id: 1,
+      type: 'expression',
+      logic: 'and',
+      operands: []
+  }
+  ```
+  - feed (object) - an object with `period` and `items` properties used to render the feed
+  - isLoading (bool) - indicates if the feed is still loading
+  - returnToBuilder (func) - a callback invoked on `Return to Buidler` button click
+  
+
+- `useInput` hook for managing text inputs, receives:
+    - `initialValue` (string) - the initial value of the input
+    - `validator` (func) - a callback used to validating the input on change
+- and returns:
+    - `value` (string) - the current value of the input
+    - `onChange` (func) - the change handler of the input
+    - `hasError` (bool) - indicates if the input has error (if `validator` is passed)
+    - `isTouched` (bool) - indicates if the input has been touched
+
+- `useExpression` hook for managing expressions/queries, receives:
+    - `initialExpression` (object) - an initial expression/query, e.g:
+    ```
+    {
+        id: 1,
+        type: 'expression',
+        logic: 'and',
+        operands: []
+    }
+    ```
+    - `onChangeCallback` (func) - a callback invoked on change of the expression/query
+    - `currentId` (number) - the currentId of all expressions
+    - `increaseId` (func) - a callback invoked to increase the `currentId` after a new expression is created
+- and returns:
+    - `expression` (object) - the new expression/query
+    - `changeExpression` (func) - a callback used for updating the expression/query
+    - `changeType` (func) - a callback invoked on changing the Logic filter of an expression 
+    - `changeFilters` (func) - a callback invoked on changing the filters
+    - `insertExpression` (func) - a callback invoked on inserting an expression
+    - `deleteExpression` (func) - a callback invoked on deletion of an expression
+    - `toggleFilterEditMode` (func) - a callback for toggling `editMode` of a filter
+    - `changeConceptType` (func) - a callback invoked for changing the concept type
+    - `changeConcept` (func) - a callback invoked for changing the concept
+    - `requestConcepts` (func) - a callback for requesting concepts

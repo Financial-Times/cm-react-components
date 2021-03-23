@@ -113,17 +113,25 @@
 
         .edit {
           @include oIconsContent(
-            $icon-name: 'edit',
-            $color: #0D7680,
-            $size: 80%
+                  $icon-name: 'edit',
+                  $color: #0D7680,
+                  $size: 80%
           );
         }
 
         .cross {
           @include oIconsContent(
-            $icon-name: 'cross',
-            $color: #0D7680,
-            $size: 80%
+                  $icon-name: 'cross',
+                  $color: #0D7680,
+                  $size: 80%
+          );
+        }
+
+        .dots {
+          @include oIconsContent(
+                  $icon-name: 'more',
+                  $color: #0D7680,
+                  $size: 80%
           );
         }
 
@@ -132,34 +140,26 @@
 
           .edit {
             @include oIconsContent(
-              $icon-name: 'edit',
-              $color: #ffffff,
-              $size: 80%
+                    $icon-name: 'edit',
+                    $color: #ffffff,
+                    $size: 80%
             );
           }
 
           .cross {
             @include oIconsContent(
-              $icon-name: 'cross',
-              $color: #ffffff,
-              $size: 80%
+                    $icon-name: 'cross',
+                    $color: #ffffff,
+                    $size: 80%
             );
           }
-        }
 
-        .dots {
-          display: inline-block;
-          width: 80%;
-          height: 80%;
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: 50%;
-          background-color: transparent;
-          vertical-align: baseline;
-          background-image: url('../../assets/images/similar.png');
-
-          &:hover {
-            background-image: url('../../assets/images/similar-white.png');
+          .dots {
+            @include oIconsContent(
+                    $icon-name: 'more',
+                    $color: #ffffff,
+                    $size: 80%
+            );
           }
         }
       }
@@ -234,9 +234,9 @@
     .add-line {
       .plus {
         @include oIconsContent(
-          $icon-name: 'plus',
-          $color: #000,
-          $size: 100%
+                $icon-name: 'plus',
+                $color: #000,
+                $size: 100%
         );
       }
 
@@ -245,27 +245,55 @@
 
         .plus {
           @include oIconsContent(
-            $icon-name: 'plus',
-            $color: #fff,
-            $size: 100%
+                  $icon-name: 'plus',
+                  $color: #fff,
+                  $size: 100%
           );
         }
       }
     }
 
     .add {
-      background-image: url('../../assets/images/add-group.svg');
+      .download {
+        @include oIconsContent(
+                $icon-name: 'download',
+                $color: #000,
+                $size: 100%
+        );
+      }
 
       &:hover {
-        background-image: url('../../assets/images/add-group-white.svg');
+        background-color: #000;
+
+        .download {
+          @include oIconsContent(
+                  $icon-name: 'download',
+                  $color: #fff,
+                  $size: 100%
+          );
+        }
       }
     }
 
     .insert {
-      background-image: url('../../assets/images/insert-in-a-group.svg');
+      .upload {
+        @include oIconsContent(
+                $icon-name: 'upload',
+                $color: #000,
+                $size: 100%
+        );
+      }
 
       &:hover {
-        background-image: url('../../assets/images/insert-in-a-group-white.svg');
+        background-color: #000;
+
+        .upload {
+          @include oIconsContent(
+                  $icon-name: 'upload',
+                  $color: #fff,
+                  $size: 100%
+          );
+        }
       }
     }
   }
@@ -279,9 +307,9 @@
 
     .trash {
       @include oIconsContent(
-        $icon-name: 'trash',
-        $color: #000,
-        $size: 100%
+              $icon-name: 'trash',
+              $color: #000,
+              $size: 100%
       );
     }
   }

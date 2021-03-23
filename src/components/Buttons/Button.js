@@ -19,7 +19,8 @@ const Button = forwardRef(({
   mono,
   b2c,
   icon,
-  title
+  title,
+  selected
 }, ref) => {
   let buttonClasses = classNameDefault;
 
@@ -71,6 +72,7 @@ const Button = forwardRef(({
       disabled={disabled}
       onClick={onClick}
       title={title}
+      aria-selected={selected}
     >
       {children}
     </button>
