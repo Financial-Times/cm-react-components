@@ -3,7 +3,6 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import del from 'rollup-plugin-delete';
 
-
 const packageJson = require("./package.json");
 
 export default {
