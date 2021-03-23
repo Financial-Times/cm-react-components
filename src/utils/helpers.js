@@ -1,14 +1,9 @@
 import {
-  API_ENDPOINTS,
-  DEFAULT_OFFSET_TIME_FILTER,
   FILTER_EXPRESSION_TYPES,
-  KEYS_FOR_SANITIZING,
   SELECT_OPTIONS_ALL,
   SELECT_OPTIONS_KEYWORD,
-  SELECT_OPTIONS_RELATED_ENTITY,
-  TOO_MANY_ARTICLES_NUMBER
+  SELECT_OPTIONS_RELATED_ENTITY
 } from './constants';
-import request from './request';
 
 // Objects helpers
 /**
@@ -34,8 +29,6 @@ export const deepCopy = inputObject => {
 
   return outputObject;
 };
-
-export const getNestedValueFromObject = (object, key) => key.split('.').reduce((result, key) => result[key], object);
 
 /**
  * Receives an array and a prop and returns the array sorted by this prop
@@ -97,206 +90,6 @@ export const dateToMonthDDYYYY = (dateToFormat, withHour = false) => {
 
 
 // Query helpers
-/**
- * Gets maxId recursively in query
- * @param {Object} query
- * @param {Number} initialValue
- * @returns {number}
- */
-export const getMaxIdInQuery = (query, initialValue) => {
-  let max = Math.max(query.id, initialValue);
-
-  query.operands.forEach(operand => {
-    if (operand.id > max) {
-      max = operand.id;
-    }
-
-    if (operand.type === FILTER_EXPRESSION_TYPES.expression) {
-      max = getMaxIdInQuery(operand, max);
-    }
-  });
-
-  return max;
-};
-
-/**
- * By given query checks if it is valid (every operand has `type` and `value`)
- * @param {Object} query
- * @param {Boolean} initialIsValid
- * @returns {boolean}
- */
-export const isValidQuery = (query, initialIsValid = true) => {
-  if (!query || !query.operands || query.operands.length < 1) {
-    return false;
-  }
-
-  let isValid = initialIsValid;
-
-  query.operands.forEach(operand => {
-    if (!(operand.type && operand.value) && operand.type !== FILTER_EXPRESSION_TYPES.expression) {
-      isValid = false;
-    } else if (operand.type === FILTER_EXPRESSION_TYPES.expression) {
-      isValid = isValidQuery(operand, isValid);
-    }
-  });
-
-  return isValid;
-};
-
-/**
- * Prepares the body for the `search` request:
- * 1. Adds `time-delta-filter` and `syndication-filter` to query operands on root level
- * 2. Adds `version` property to the root level of the returned object
- * @param {Object} query
- * @param {Object} version
- * @param {Object} timePeriod
- * @param {Object} syndicationFilter
- * @returns {{query: Object, version: Object}} The valid object for search request
- */
-export const prepareQueryForSearch = (query, version, timePeriod, syndicationFilter) => {
-  const timeDeltaFilter = timePeriod.offset
-    ? {
-      type: FILTER_EXPRESSION_TYPES.timeDelta,
-      value: timePeriod.value,
-      offset: DEFAULT_OFFSET_TIME_FILTER.toString()
-    }
-    : {
-      type: FILTER_EXPRESSION_TYPES.timeDelta,
-      value: timePeriod.value
-    };
-
-  const timeDeltaFilterIndex = query.operands.findIndex(operand => operand.type === FILTER_EXPRESSION_TYPES.timeDelta);
-  const syndicationFilterIndex = query.operands.findIndex(operand => operand.type === FILTER_EXPRESSION_TYPES.syndication);
-
-  timeDeltaFilterIndex === -1 && query.operands.push(timeDeltaFilter);
-  syndicationFilterIndex === -1 && query.operands.push(syndicationFilter);
-
-  return {
-    ...version,
-    query
-  };
-};
-
-/**
- * Prepares query for edit mode:
- * 1. Removes `time-delta-filter` and `syndication-filter`
- * @param {Object} expression
- * @param {Number} currentId
- * @param {Object} concepts
- * @returns {{maxId: {Number}, expression: {Object}}}
- */
-export const prepareQueryForEdit = (expression, currentId, concepts) => {
-  let maxId = currentId;
-  expression.id = maxId;
-
-  const timeDeltaFilterIndex = expression.operands
-    && expression.operands.findIndex(operand => operand.type === FILTER_EXPRESSION_TYPES.timeDelta);
-
-  if (timeDeltaFilterIndex > -1) {
-    expression.operands.splice(timeDeltaFilterIndex, 1);
-  }
-
-  const syndicationFilterIndex = expression.operands
-    && expression.operands.findIndex(operand => operand.type === FILTER_EXPRESSION_TYPES.syndication);
-
-  if (syndicationFilterIndex > -1) {
-    expression.operands.splice(syndicationFilterIndex, 1);
-  }
-
-  if (expression.type === FILTER_EXPRESSION_TYPES.expression) {
-    expression.operands.forEach(operand => {
-      maxId += 1;
-      const newOperand = prepareQueryForEdit(operand, maxId, concepts).expression;
-      if (newOperand.type === FILTER_EXPRESSION_TYPES.relatedEntity) {
-        newOperand.prefLabel = concepts[newOperand.value].prefLabel;
-      }
-      // eslint-disable-next-line no-param-reassign
-      operand = newOperand;
-    });
-  }
-
-  return {
-    expression,
-    maxId
-  };
-};
-
-/**
- * By given query collects all values of `related-entity-filters` and pushes them to an array
- * which is later used for getting the `prefLabels` of the filters
- * @param {Object} query
- * @param {Array} currentIds
- * @returns {*[]}
- */
-export const getConceptsIds = (query, currentIds) => {
-  let arrayOfIds = [].concat(currentIds);
-
-  query.operands.forEach(operand => {
-    if (operand.type === FILTER_EXPRESSION_TYPES.relatedEntity) {
-      arrayOfIds.push(operand.value);
-    } else if (operand.type === FILTER_EXPRESSION_TYPES.expression) {
-      arrayOfIds = getConceptsIds(operand, arrayOfIds);
-    }
-  });
-
-  return arrayOfIds;
-};
-
-/**
- * By given array of values, constructs correct URL and sends a request for `prefLabels`
- * @param {Array} conceptsIds
- * @returns {Object}
- */
-export const getPrefLabelsByIds = async conceptsIds => {
-  let endpoint = API_ENDPOINTS.internalConcordances;
-  conceptsIds.forEach(id => {
-    endpoint += `ids=${id}&`;
-  });
-
-  return await request(endpoint);
-};
-
-/**
- * From given `period` calculates the startingDate and endDate timestamps
- * @param {String} period
- * @param {String} offset
- * @returns {{inHours: *, from: *, to: *}}
- */
-export const getFeedPeriod = (period, offset) => {
-  const offsetInMilliSeconds = +offset * 1000 * 60 * 60;
-  const periodInMilliseconds = period * 1000 * 60 * 60;
-  const endDateTimestamp = new Date().getTime() - offsetInMilliSeconds;
-  const startDateTimestamp = endDateTimestamp - periodInMilliseconds;
-
-  return {
-    inHours: period,
-    from: startDateTimestamp,
-    to: endDateTimestamp
-  };
-};
-
-/**
- * Sanitizes a query - removes all not needed properties in it
- * @param {Object} query
- * @returns {Object} sanitized query
- */
-export const sanitizeQuery = query => {
-  Object.keys(query).forEach(key => {
-    if (KEYS_FOR_SANITIZING.indexOf(key) > -1) {
-      delete query[key];
-    }
-  });
-
-  if (query.type === FILTER_EXPRESSION_TYPES.expression) {
-    query.operands.forEach(operand => {
-      const newOperand = sanitizeQuery(operand);
-      // eslint-disable-next-line no-param-reassign
-      operand = newOperand;
-    });
-  }
-
-  return query;
-};
 
 /**
  * Receives an array of filters and the id of the current filter,
@@ -328,25 +121,3 @@ export const getDropdownOptions = (filters, currentId) => {
   return dropDownOptions;
 };
 
-// Other
-/**
- * Generates subtitle text by case with given articles count and is the building started
- * @param {Number} articlesCount
- * @param {Boolean} isBuildingStarted
- * @returns {string} The subtitle text
- */
-export const getSubtitleTextForQB = (articlesCount, isBuildingStarted) => {
-  let subTitleText = '';
-
-  if (articlesCount > TOO_MANY_ARTICLES_NUMBER) {
-    subTitleText = `More than ${TOO_MANY_ARTICLES_NUMBER} articles match. For better results, please refine your search.`;
-  } else if (articlesCount > 0) {
-    subTitleText = `${articlesCount} articles match your query. Good job!`;
-  } else if (isBuildingStarted) {
-    subTitleText = 'No articles match your query. For better results, please refine your search.';
-  } else {
-    subTitleText = 'Create complex filter expression to build the perfect query';
-  }
-
-  return subTitleText;
-};

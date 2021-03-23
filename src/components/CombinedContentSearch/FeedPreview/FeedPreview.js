@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 
 import ArticlesTeasers from '../../../components/CombinedContentSearch/Teaser/ArticlesTeasers';
 import TimePeriod from '../../../components/CombinedContentSearch/TimePeriod/TimePeriod';
-import PreviewFilterExpression from '../../../components/CombinedContentSearch/FilterExpression/PreviewFilterExpression';
+import PreviewFilterExpression
+  from '../../../components/CombinedContentSearch/FilterExpression/PreviewFilterExpression';
 import Button from '../../../components/Buttons/Button';
 import Pagination from '../../../components/Buttons/Pagination';
 import LoaderScreen from '../../../components/Loader/LoaderScreen';
 
 import { usePagination } from '../../../utils/hooks/usePagination';
 import { sortArrayOfObjects } from '../../../utils/helpers';
-import { APP_ROUTES } from '../../../utils/constants';
 
 const FeedPreview = ({
   expression,
   feed,
-  isLoading
+  isLoading,
+  returnToBuilder
 }) => {
-  const history = useHistory();
-
   const [pageItemsToRender, setPageItemsToRender] = useState(null);
   const {
     isPaged,
@@ -51,14 +49,6 @@ const FeedPreview = ({
 
     setPageItemsToRender(newPageItems);
   }, [JSON.stringify(pageItems)]);
-
-  const returnToBuilder = () => {
-    const path = history.location.pathname;
-    // Length of 'preview' route + 1 (because of '/' in front)
-    const previewLength = APP_ROUTES.queryBuilderPreview.length + 1;
-    const newPath = path.slice(0, path.length - previewLength);
-    history.push(newPath);
-  };
 
   const subTitleText = feed && feed.items && feed.items.length > 0
     ? `${feed.items.length} articles match your query. Good job!`
@@ -133,7 +123,8 @@ const FeedPreview = ({
 FeedPreview.propTypes = {
   expression: PreviewFilterExpression.propTypes.expression,
   feed: PropTypes.object,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  returnToBuilder: PropTypes.func
 };
 
 export default FeedPreview;

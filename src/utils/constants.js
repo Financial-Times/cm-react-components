@@ -1,122 +1,3 @@
-// Table
-export const TABLE_HEAD_CLIENTS = [
-  {
-    name: 'Company name',
-    dataKey: 'company',
-    sortBy: 'company'
-  },
-  {
-    name: 'Contact person',
-    dataKey: 'contactPerson',
-    sortBy: 'contactPerson.firstName'
-  },
-  {
-    name: 'Contact email',
-    dataKey: 'contactEmail',
-    sortBy: 'contactPerson.email'
-  },
-  {
-    name: 'Date joined',
-    dataKey: 'created',
-    sortBy: 'created'
-  },
-  {
-    name: 'Status',
-    dataKey: 'status',
-    sortBy: 'status'
-  }
-];
-export const TABLE_HEAD_QUERIES = [
-  {
-    name: 'Name',
-    dataKey: 'feed.name',
-    sortBy: 'feed.name'
-  },
-  {
-    name: 'Description',
-    dataKey: 'feed.description',
-    sortBy: 'feed.description'
-  },
-  {
-    name: 'Created on',
-    dataKey: 'feed.created_at',
-    sortBy: 'feed.created_at'
-  },
-  {
-    name: 'Last edited',
-    dataKey: 'feed.modified_at',
-    sortBy: 'feed.modified_at'
-  }
-];
-export const TABLE_KEYS_DATE_FORMAT = ['created', 'feed.created_at', 'feed.modified_at'];
-
-// Header and Footer
-export const LEGAL_PRIVACY_LINKS = [
-  {
-    link: 'http://help.ft.com/help/legal-privacy/cookies/',
-    text: 'Cookies'
-  },
-  {
-    link: 'http://help.ft.com/help/legal-privacy/copyright/copyright-policy/',
-    text: 'Copyright'
-  },
-  {
-    link: 'http://help.ft.com/help/legal-privacy/privacy/',
-    text: 'Privacy'
-  },
-  {
-    link: 'http://help.ft.com/help/legal-privacy/terms-conditions',
-    text: 'Terms & Conditions'
-  }
-];
-export const PRIMARY_NAVIGATION_DATA = {
-  'primaryMenu': {
-    'label': 'Primary Menu',
-    'items': [
-      {
-        'label': 'Client feed',
-        'url': '/clients',
-        'submenu': {
-          'clientMenu': {
-            'label': 'client Menu',
-            'items': [
-              {
-                'label': 'Clients',
-                'url': '/clients',
-                'submenu': null
-              }
-            ]
-          }
-        }
-      }
-    ]
-  }
-};
-export const CLIENT_NAVIGATION_DATA = [
-  {
-    label: 'Account',
-    url: '/account',
-    submenu: null
-  },
-  {
-    label: 'Query Builder',
-    url: '/query-builder',
-    submenu: null
-  }
-];
-
-// Routes
-export const APP_ROUTES = {
-  home: '/',
-  clients: '/clients',
-  account: '/account',
-  queryBuilder: '/query-builder',
-  queryBuilderPreview: 'preview',
-  currentFeed: '/current-feed',
-  settings: '/settings',
-  addSyndicationPartner: '/add-syndication-partner'
-};
-
 // API urls
 export const PRODUCTION_URL = '/api/';
 export const DEV_URL = 'http://localhost:9090/ccf/api/';
@@ -156,16 +37,6 @@ export const FILTER_EXPRESSION_TYPES = {
   syndication: 'syndication-filter'
 };
 
-// Query
-export const QUERY_VERSION = {
-  version: 'v1.0.0'
-};
-export const QUERY_SYNDICATION_FILTER = {
-  type: 'syndication-filter',
-  value: true
-};
-
-export const KEYS_FOR_SANITIZING = ['id', 'editMode', 'prefLabel', 'options', 'narrowerConcepts', 'relatedConcepts'];
 export const TYPES_FOR_SIMILAR_CONCEPTS = ['Topic', 'Location'];
 
 // Radio and Select options
@@ -256,7 +127,6 @@ export const SELECT_OPTIONS_ALL = [
   }
 ];
 
-export const DEFAULT_SELECTED_PERIOD = '168';
 export const SELECT_OPTIONS_PERIOD = [
   {
     id: 1,
@@ -291,7 +161,4 @@ export const SELECT_OPTIONS_PERIOD = [
 ];
 
 // Other
-export const EMPTY_VALUE = '-';
 export const KEY_CODE_SPACE = 32;
-export const TOO_MANY_ARTICLES_NUMBER = 200;
-export const DEFAULT_OFFSET_TIME_FILTER = '720';

@@ -26,7 +26,9 @@ export { default as Hint } from './components/CombinedContentSearch/Hint/Hint';
 export { default as HintConcepts } from './components/CombinedContentSearch/Hint/HintConceps';
 export { default as HintLogicGroup } from './components/CombinedContentSearch/Hint/HintLogicGroup';
 export { default as ExpressionGroup } from './components/CombinedContentSearch/FilterExpression/ExpressionGroup';
-export { default as PreviewFilterExpression } from './components/CombinedContentSearch/FilterExpression/PreviewFilterExpression';
+export {
+  default as PreviewFilterExpression
+} from './components/CombinedContentSearch/FilterExpression/PreviewFilterExpression';
 export { default as ArticlesTeasers } from './components/CombinedContentSearch/Teaser/ArticlesTeasers';
 export { default as Teaser } from './components/CombinedContentSearch/Teaser/Teaser';
 export { default as TimePeriod } from './components/CombinedContentSearch/TimePeriod/TimePeriod';
