@@ -23,6 +23,20 @@ const TimePeriod = ({
   const formattedFrom = dateToMonthDDYYYY(from);
   const formattedTo = dateToMonthDDYYYY(to);
 
+  const embargoCheckboxTemplate = setEmbargoPeriod
+    ? (
+      <FormsField
+        title="30 days embargo period"
+        className="embargo-period"
+      >
+        <CheckInput
+          checked={embargoPeriod}
+          onChange={setEmbargoPeriod}
+        />
+      </FormsField>
+    )
+    : null;
+
   return (
     <div className={timePeriodClasses} data-testid="timePeriod">
       <div className="container">
@@ -32,21 +46,13 @@ const TimePeriod = ({
         {isEditable
           ? (
             <>
-            <SelectBox
-              primary
-              selectedValue={from}
-              onChange={event => onChange(event.target.value)}
-              options={SELECT_OPTIONS_PERIOD}
-            />
-            <FormsField
-              title="30 days embargo period"
-              className="embargo-period"
-            >
-              <CheckInput
-                checked={embargoPeriod}
-                onChange={setEmbargoPeriod}
+              <SelectBox
+                primary
+                selectedValue={from}
+                onChange={event => onChange(event.target.value)}
+                options={SELECT_OPTIONS_PERIOD}
               />
-            </FormsField>
+              {embargoCheckboxTemplate}
             </>
           ) : (
             <>

@@ -79,10 +79,12 @@
       }
 
       .arrow {
-        width: 20px;
-        height: 100%;
-        transform: rotate(-90deg);
-        background: url(../../assets/images/arrow-down-green.svg) no-repeat center;
+        width: 20px !important;
+        height: 100% !important;
+        @include oIconsContent(
+                $icon-name: 'arrow-right',
+                $color: #0D7680
+        );
       }
     }
 
@@ -296,10 +298,6 @@
         }
       }
     }
-  }
-
-  button.hint {
-    width: 15px;
   }
 
   button.delete {

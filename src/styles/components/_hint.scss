@@ -1,8 +1,11 @@
 .hint {
   width: 15px;
   height: 15px;
-  margin-left: 5px;
-  background-image: url('../../assets/images/hint-question.png');
+  @include oIconsContent(
+          $icon-name: 'info',
+          $color: #000000,
+          $size: 100%
+  );
 }
 
 .hint-concepts {
