@@ -1,0 +1,41 @@
+.teaser-container {
+  display: flex;
+  width: 100%;
+  max-width: 760px;
+  margin-bottom: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc1b7;
+
+  .image-container {
+    width: 30%;
+  }
+
+  .content-wrapper {
+    width: 70%;
+
+    .topic {
+      margin-bottom: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: capitalize;
+      line-height: 20px;
+      color: #990f3d;
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .heading {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    .content {
+      font-size: 16px;
+      color: rgba($color-font-main-dark, 0.6);
+      line-height: 20px;
+    }
+  }
+}

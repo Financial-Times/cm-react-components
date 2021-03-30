@@ -1,0 +1,331 @@
+.bubble-container {
+  position: relative;
+  width: 100%;
+  padding: 12px 0 0 12px;
+
+  &:before {
+    content: "" !important;
+    position: absolute;
+    width: 2px;
+    height: 115%;
+    top: 0;
+    left: 0;
+    background-color: $color-lines-connector;
+  }
+
+  &:last-of-type:before {
+    display: none;
+  }
+
+  .bubble {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    min-width: 250px;
+    height: 40px;
+    border: 1px solid $color-border;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+    &:before {
+      content: "" !important;
+      position: absolute;
+      width: 11px;
+      height: 2px;
+      top: 50%;
+      left: -12px;
+      background-color: $color-lines-connector;
+    }
+  }
+
+  &.primary {
+    &:before {
+      background-color: $color-lines-connector-primary;
+    }
+
+    .bubble {
+      max-width: 340px;
+
+      &:before {
+        background-color: $color-lines-connector-primary;
+      }
+    }
+
+    .preview-bubble {
+      padding-right: 0;
+    }
+  }
+
+  &.filter .bubble {
+    max-width: 835px;
+    height: 56px;
+  }
+
+  .preview-bubble {
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 16px;
+
+    .type-container {
+      display: flex;
+      justify-content: space-between;
+      width: 35%;
+      height: 100%;
+
+      .type {
+        color: $color-primary;
+        font-weight: 600;
+        line-height: 38px;
+      }
+
+      .arrow {
+        width: 20px !important;
+        height: 100% !important;
+        @include oIconsContent(
+                $icon-name: 'arrow-right',
+                $color: #0D7680
+        );
+      }
+    }
+
+    .value {
+      width: 65%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-left: 5px;
+      text-align: left;
+
+      &.tooltip {
+        width: calc(65% - 30px);
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      width: 90px;
+      height: 100%;
+
+      &.tooltip {
+        width: 120px;
+      }
+
+      .as-icon {
+        width: 50%;
+
+        .edit {
+          @include oIconsContent(
+                  $icon-name: 'edit',
+                  $color: #0D7680,
+                  $size: 80%
+          );
+        }
+
+        .cross {
+          @include oIconsContent(
+                  $icon-name: 'cross',
+                  $color: #0D7680,
+                  $size: 80%
+          );
+        }
+
+        .dots {
+          @include oIconsContent(
+                  $icon-name: 'more',
+                  $color: #0D7680,
+                  $size: 80%
+          );
+        }
+
+        &:hover {
+          background-color: #0D7680;
+
+          .edit {
+            @include oIconsContent(
+                    $icon-name: 'edit',
+                    $color: #ffffff,
+                    $size: 80%
+            );
+          }
+
+          .cross {
+            @include oIconsContent(
+                    $icon-name: 'cross',
+                    $color: #ffffff,
+                    $size: 80%
+            );
+          }
+
+          .dots {
+            @include oIconsContent(
+                    $icon-name: 'more',
+                    $color: #ffffff,
+                    $size: 80%
+            );
+          }
+        }
+      }
+
+      .separator {
+        height: 70%;
+        min-height: initial;
+        align-self: center;
+        margin: 0;
+      }
+    }
+  }
+
+  .filter-bubble {
+    align-items: center;
+    max-width: 835px;
+    height: 100%;
+    padding: 10px;
+
+    .o-forms-input {
+      width: 20%;
+    }
+
+    .autocomplete-container,
+    .input-container {
+      width: 79%;
+    }
+  }
+}
+
+.logic-filter-bubble {
+  display: flex;
+  height: 40px;
+
+  .o-forms-input {
+    margin-top: 0;
+
+    .o-forms-input--radio-box__container {
+      height: 100%;
+
+      label {
+        height: 100%;
+
+        .o-forms-input__label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  button:not(.o-tooltip-close) {
+    width: 40px;
+    height: 100%;
+
+    .o-icons-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .logic-buttons-group {
+    display: flex;
+    justify-content: space-between;
+    width: 118px;
+    height: 100%;
+    margin-left: 10px;
+    border: 1px solid #000000;
+
+    .add-line {
+      .plus {
+        @include oIconsContent(
+                $icon-name: 'plus',
+                $color: #000,
+                $size: 100%
+        );
+      }
+
+      &:hover {
+        background-color: #000;
+
+        .plus {
+          @include oIconsContent(
+                  $icon-name: 'plus',
+                  $color: #fff,
+                  $size: 100%
+          );
+        }
+      }
+    }
+
+    .add {
+      .download {
+        @include oIconsContent(
+                $icon-name: 'download',
+                $color: #000,
+                $size: 100%
+        );
+      }
+
+      &:hover {
+        background-color: #000;
+
+        .download {
+          @include oIconsContent(
+                  $icon-name: 'download',
+                  $color: #fff,
+                  $size: 100%
+          );
+        }
+      }
+    }
+
+    .insert {
+      .upload {
+        @include oIconsContent(
+                $icon-name: 'upload',
+                $color: #000,
+                $size: 100%
+        );
+      }
+
+      &:hover {
+        background-color: #000;
+
+        .upload {
+          @include oIconsContent(
+                  $icon-name: 'upload',
+                  $color: #fff,
+                  $size: 100%
+          );
+        }
+      }
+    }
+  }
+
+  button.delete {
+    width: 32px;
+
+    .trash {
+      @include oIconsContent(
+              $icon-name: 'trash',
+              $color: #000,
+              $size: 100%
+      );
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-medium) {
+  .bubble-container {
+    &.filter .bubble {
+      height: 112px;
+
+      .filter-bubble {
+        flex-direction: column;
+
+        .o-forms-input--select,
+        .autocomplete-container {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

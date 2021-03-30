@@ -1,0 +1,42 @@
+.time-period-container {
+  &.editable {
+    padding: 0 10px;
+
+    .to {
+      margin-top: 10px;
+    }
+  }
+
+  .from,
+  .to {
+    p:not(.date) {
+      margin: 0 0 5px;
+      font-size: 14px;
+      line-height: 16px;
+      color: $color-font-light;
+    }
+
+    .date {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .embargo-period {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-large) {
+  &.editable {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+  &.editable {
+    width: 100%;
+  }
+}
