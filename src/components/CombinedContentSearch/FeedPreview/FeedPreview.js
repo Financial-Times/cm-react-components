@@ -16,7 +16,8 @@ const FeedPreview = ({
   expression,
   feed,
   isLoading,
-  returnToBuilder
+  returnToBuilder,
+  buttonProps
 }) => {
   const [pageItemsToRender, setPageItemsToRender] = useState(null);
   const {
@@ -63,6 +64,7 @@ const FeedPreview = ({
           mono
           big
           onClick={returnToBuilder}
+          {...buttonProps}
         >
           Return to builder
         </Button>
@@ -124,7 +126,8 @@ FeedPreview.propTypes = {
   expression: PreviewFilterExpression.propTypes.expression,
   feed: PropTypes.object,
   isLoading: PropTypes.bool,
-  returnToBuilder: PropTypes.func
+  returnToBuilder: PropTypes.func,
+  buttonProps: PropTypes.any
 };
 
 export default FeedPreview;
