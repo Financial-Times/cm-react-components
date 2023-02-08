@@ -1,0 +1,75 @@
+version: 2.1
+
+references:
+  filter_all_branches: &filter_all_branches
+    branches:
+      only: /.*/
+    tags:
+      ignore: /.*/
+  docker-auth: &docker-auth
+    auth:
+      username: $DOCKERHUB_USERNAME
+      password: $DOCKERHUB_ACCESS_TOKEN
+
+orbs:
+  snyk: snyk/snyk@1.4.0
+  change-api: financial-times/change-api@0.25.0
+
+commands:
+  test:
+    steps:
+      - checkout
+      - run:
+          name: Install package
+          command: npm install .
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Test
+          command: npm run test -- --coverage
+      - run:
+          name: Report coverage
+          command: npm run coverage
+      - run:
+          name: Build
+          command: npm run build
+  snyk:
+    steps:
+      - checkout
+      - snyk/scan:
+          fail-on-issues: true
+          monitor-on-build: false
+
+executors:
+  node:
+    docker:
+      - image: circleci/node:14
+        <<: *docker-auth
+
+jobs:
+  test_and_build:
+    executor: node
+    steps:
+      - test
+  snyk:
+    executor: node
+    steps:
+      - snyk
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test_and_build:
+          context: dockerhub-shared
+          filters:
+            <<: *filter_all_branches
+  snyk:
+    jobs:
+      - snyk:
+          context: 
+            - cm-team-snyk
+            - dockerhub-shared
+          filters:
+            <<: *filter_all_branches
