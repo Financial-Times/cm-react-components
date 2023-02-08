@@ -123,6 +123,13 @@ describe('Test FeedPreview component', () => {
     expect(getByTestId(mockId).querySelector(`.${classNameFeedPreview}`)).not.toBeInTheDocument();
   });
 
+  it('FeedPreview set buttonProps correctly', () => {
+    const { getByTestId } = render(<FeedPreview feed={mockArticles} buttonProps={ { disabled: true } } />);
+    
+    const button = getByTestId(mockId).querySelector('.feed-preview-container button')
+    expect(button).toBeDisabled();
+  });
+
   it('FeedPreview renders expression children correctly', () => {
     const { queryByText } = render(<FeedPreview feed={mockArticles} expression={mockExpression} />);
     expect(queryByText(pleaseBuildAQueryText)).not.toBeInTheDocument();
