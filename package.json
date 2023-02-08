@@ -11,7 +11,8 @@
     "build": "rollup -c",
     "prepare": "npm run build",
     "lint": "eslint src/*.js src/**/*.js src/**/**/*.js",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "cat ./coverage/lcov.info | npx coveralls"
   },
   "type": "module",
   "repository": {
@@ -67,6 +68,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
+    "coveralls": "^3.1.1",
     "jest-environment-jsdom": "^29.4.2",
     "node-sass": "^5.0.0",
     "react-app-polyfill": "^1.0.6",
@@ -81,6 +83,12 @@
     "testEnvironment": "jsdom",
     "roots": [
       "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/serviceWorker.js",
+      "!src/index.jsx"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
