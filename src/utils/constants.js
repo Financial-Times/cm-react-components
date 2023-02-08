@@ -160,5 +160,37 @@ export const SELECT_OPTIONS_PERIOD = [
   }
 ];
 
+// Header and Footer
+export const LEGAL_PRIVACY_LINKS = [
+  {
+    link: 'http://help.ft.com/help/legal-privacy/cookies/',
+    text: 'Cookies'
+  },
+  {
+    link: 'http://help.ft.com/help/legal-privacy/copyright/copyright-policy/',
+    text: 'Copyright'
+  },
+  {
+    link: 'http://help.ft.com/help/legal-privacy/privacy/',
+    text: 'Privacy'
+  },
+  {
+    link: 'http://help.ft.com/help/legal-privacy/terms-conditions',
+    text: 'Terms & Conditions'
+  }
+];
+export const CLIENT_NAVIGATION_DATA = [
+  {
+    label: 'Account',
+    url: '/account',
+    submenu: null
+  },
+  {
+    label: 'Query Builder',
+    url: '/query-builder',
+    submenu: null
+  }
+];
+
 // Other
 export const KEY_CODE_SPACE = 32;

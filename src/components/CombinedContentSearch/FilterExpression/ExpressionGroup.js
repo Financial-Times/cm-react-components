@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import LogicFilterBubble from '../Bubble/LogicFilterBubble';
 import PreviewBubble from '../Bubble/PreviewBubble';
 import FilterBubble from '../Bubble/FilterBubble';
-import HintConcepts from '../Hint/HintConceps';
+import HintConcepts from '../Hint/HintConcepts';
 
 import { useExpression } from '../../../utils/hooks/useExpression';
 import {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Footer = ({ links }) => {
-  const renderLinks = () => links.map((link, idx) => (
+const Footer = ({ legalPrivacyLinks }) => {
+  const renderLinks = () => legalPrivacyLinks.map((link, idx) => (
       <a
         key={idx}
         target="_blank"
@@ -21,7 +21,7 @@ const Footer = ({ links }) => {
         <div className="o-footer-services__wrapper o-footer-services__wrapper--legal">
           <div className="o-footer-services__links">
             {
-              links && links.length > 0 && renderLinks()
+              legalPrivacyLinks && legalPrivacyLinks.length > 0 && renderLinks()
             }
           </div>
           <p>
@@ -37,7 +37,7 @@ const Footer = ({ links }) => {
 };
 
 Footer.propTypes = {
-  links: PropTypes.array
+  legalPrivacyLinks: PropTypes.array
 };
 
 export default Footer;

@@ -31,6 +31,7 @@ const Tooltip = ({
       ref={tooltipRef}
       className={tooltipClasses}
       style={tooltipStyles}
+      data-testid="tooltip"
     >
       <div className="o-tooltip-content">
         <div>{children}</div>
