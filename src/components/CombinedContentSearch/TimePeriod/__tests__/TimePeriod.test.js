@@ -12,6 +12,7 @@ const classNameTo = 'to';
 const classNameDate = 'date';
 
 const mockOnChange = jest.fn();
+const mockOnSetEmbargoPeriod = jest.fn();
 
 describe('Test `TimePeriod` component', () => {
   afterEach(cleanup);
@@ -37,6 +38,27 @@ describe('Test `TimePeriod` component', () => {
     const { getByTestId } = render(<TimePeriod />);
     expect(getByTestId(mockId).querySelector(`.${classNameFrom} .${classNameDate}`)).toBeInTheDocument();
     expect(getByTestId(mockId).querySelector(`.${classNameTo} .${classNameDate}`)).toBeInTheDocument();
+  });
+
+  it('TimePeriod set formsFieldProps correctly', () => {
+    const { getByTestId } = render(<TimePeriod isEditable={true} setEmbargoPeriod={mockOnSetEmbargoPeriod} onChange={mockOnChange} formsFieldProps={ { titleProps: { shrink: true } } }/>);
+
+    const title = getByTestId('formsFieldTitleContainer')
+    expect(title.className).toBe('o-forms-title o-forms-title--shrink');
+  });
+  
+  it('TimePeriod set checkInputProps correctly', () => {
+    const { getByTestId } = render(<TimePeriod isEditable={true} setEmbargoPeriod={mockOnSetEmbargoPeriod} onChange={mockOnChange} checkInputProps={ { disabled: true } }/>);
+
+    const input = getByTestId(mockId).querySelector('input');
+    expect(input).toBeDisabled();
+  });
+
+  it('TimePeriod set selectBoxProps correctly', () => {
+    const { getByTestId } = render(<TimePeriod isEditable={true} onChange={mockOnChange} selectBoxProps={ { disabled: true } }/>);
+
+    const selectBox = getByTestId(mockSelectId);
+    expect(selectBox).toBeDisabled();
   });
 
   it('TimePeriod clear date clickHandler is called', () => {
