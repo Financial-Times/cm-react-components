@@ -55,7 +55,7 @@ const FilterBubble = ({
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         onKeyDown={handleKeyDown}
-        {...textInputProps}
+        customInputProps={textInputProps}
       />
     )
     : (

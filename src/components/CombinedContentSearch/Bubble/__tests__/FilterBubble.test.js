@@ -78,6 +78,40 @@ describe('Test FilterBubble component', () => {
     expect(mockAutocompleteFinish).toHaveBeenCalledWith(mockNewValue);
   });
 
+  it('FilterBubble set customAutoCompleteInputProps correctly', () =>{
+    const { getByTestId } = render(
+      <FilterBubble
+        value={mockNewValue}
+        onChange={mockOnChange}
+        autocompleteId={mockAutocompleteId}
+        autocompleteOptions={mockAutocompleteOptions}
+        autocompleteFinish={mockAutocompleteFinish}
+        customAutocompleteInputProps={ { maxLength: 12, disabled: true } }
+      />
+    );
+    const customAutocompleteInput = getByTestId(mockId).querySelector('.autocomplete-container input')
+
+    expect(customAutocompleteInput.maxLength).toBe(12);
+    expect(customAutocompleteInput).toBeDisabled();
+  })
+
+  it('FilterBubble set textInputProps correctly', () =>{
+    const { getByTestId } = render(
+      <FilterBubble
+        value={mockKeywordValue}
+        onChange={mockOnChange}
+        autocompleteId={mockAutocompleteId}
+        autocompleteOptions={mockAutocompleteOptions}
+        autocompleteFinish={mockAutocompleteFinish}
+        textInputProps={ { maxLength: 10, disabled: true } }
+      />
+    );
+    const textInput = getByTestId(mockId).querySelector('.input-container input')
+
+    expect(textInput.maxLength).toBe(10);
+    expect(textInput).toBeDisabled();
+  })
+
   it('FilterBubble onKeyDown handler is called correctly', () => {
     const { getByTestId } = render(
       <FilterBubble

@@ -15,7 +15,8 @@ const TextInput = ({
   hasError,
   errorMessage = '',
   isTouched,
-  rows = 4
+  rows = 4,
+  customInputProps
 }) => {
   const isTextArea = inputType === 'textarea';
 
@@ -45,7 +46,7 @@ const TextInput = ({
       hasError={hasError}
       errorMessage={errorMessage}
     >
-      <Input data-testid="textInput" {...inputProps} />
+      <Input data-testid="textInput" {...inputProps} {...customInputProps} />
     </FormsInput>
   );
 };
@@ -68,7 +69,8 @@ TextInput.propTypes = {
   hasError: FormsInput.propTypes.hasError,
   errorMessage: FormsInput.propTypes.errorMessage,
   isTouched: PropTypes.bool,
-  rows: PropTypes.number
+  rows: PropTypes.number,
+  customInputProps: PropTypes.any
 };
 
 export default TextInput;

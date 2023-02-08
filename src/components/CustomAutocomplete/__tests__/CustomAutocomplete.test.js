@@ -67,6 +67,19 @@ describe('CustomAutocomplete component test', () => {
     expect(console.error).toHaveBeenCalled();
   });
 
+  it('CustomAutocomplete `input` element is disabled from CustomAutocomplete props', () => {
+    const { getByTestId } = render(
+      <CustomAutocomplete
+        id={mockId}
+        options={mockOptions}
+        onComplete={mockOnComplete}
+        inputProps={ { disabled: true } }
+      />
+    );
+    const input = getByTestId(mockId).querySelector('input');
+    expect(input).toBeDisabled();
+  });
+
   it('CustomAutocomplete `useEffect` is not called on `inputValue` change', () => {
     const { getByTestId } = render(
       <CustomAutocomplete
