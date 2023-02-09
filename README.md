@@ -1,4 +1,8 @@
 # cm-react-components
+
+[![Coverage Status](https://coveralls.io/repos/github/Financial-Times/cm-react-components/badge.svg)](https://coveralls.io/github/Financial-Times/cm-react-components)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Financial-Times/cm-react-components/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Financial-Times/cm-react-components/tree/main)
+
 Repository for shared React components build atop of Origami and maintained by the C&amp;M team
 
 ## Contents

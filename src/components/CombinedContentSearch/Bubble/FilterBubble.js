@@ -17,7 +17,9 @@ const FilterBubble = ({
   autocompleteOptions,
   autocompleteFinish,
   autocompleteChange,
-  children
+  children,
+  textInputProps,
+  customAutocompleteInputProps
 }) => {
 
   const handleInputBlur = event => {
@@ -53,6 +55,7 @@ const FilterBubble = ({
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         onKeyDown={handleKeyDown}
+        customInputProps={textInputProps}
       />
     )
     : (
@@ -61,6 +64,7 @@ const FilterBubble = ({
         options={autocompleteOptions}
         onComplete={autocompleteFinish}
         onChange={autocompleteChange}
+        inputProps={customAutocompleteInputProps}
       />
     );
 
@@ -96,7 +100,9 @@ FilterBubble.propTypes = {
   autocompleteOptions: CustomAutocomplete.propTypes.options,
   autocompleteFinish: CustomAutocomplete.propTypes.onComplete,
   autocompleteChange: CustomAutocomplete.propTypes.onChange,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  textInputProps: PropTypes.any,
+  customAutocompleteInputProps: CustomAutocomplete.propTypes.inputProps
 };
 
 export default FilterBubble;

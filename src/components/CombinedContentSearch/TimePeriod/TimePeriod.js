@@ -13,7 +13,10 @@ const TimePeriod = ({
   to = '',
   onChange,
   embargoPeriod,
-  setEmbargoPeriod
+  setEmbargoPeriod,
+  formsFieldProps,
+  checkInputProps,
+  selectBoxProps
 }) => {
   let timePeriodClasses = 'time-period-container';
   if (isEditable) {
@@ -28,10 +31,12 @@ const TimePeriod = ({
       <FormsField
         title="30 days embargo period"
         className="embargo-period"
+        {...formsFieldProps}
       >
         <CheckInput
           checked={embargoPeriod}
           onChange={setEmbargoPeriod}
+          {...checkInputProps}
         />
       </FormsField>
     )
@@ -51,6 +56,7 @@ const TimePeriod = ({
                 selectedValue={from}
                 onChange={event => onChange(event.target.value)}
                 options={SELECT_OPTIONS_PERIOD}
+                {...selectBoxProps}
               />
               {embargoCheckboxTemplate}
             </>
@@ -77,7 +83,10 @@ TimePeriod.propTypes = {
   to: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onChange: PropTypes.func,
   embargoPeriod: CheckInput.propTypes.checked,
-  setEmbargoPeriod: CheckInput.propTypes.onChange
+  setEmbargoPeriod: CheckInput.propTypes.onChange,
+  formsFieldProps: PropTypes.any,
+  checkInputProps: PropTypes.any,
+  selectBoxProps: PropTypes.any
 };
 
 export default TimePeriod;

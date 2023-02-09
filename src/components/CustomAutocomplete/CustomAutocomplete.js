@@ -8,7 +8,8 @@ const CustomAutocomplete = ({
   id,
   options,
   onChange,
-  onComplete
+  onComplete,
+  inputProps
 }) => {
   const {
     getRootProps,
@@ -48,7 +49,7 @@ const CustomAutocomplete = ({
     ? (
       <div className="autocomplete-container" data-testid={id}>
         <div {...getRootProps()}>
-          <input {...getInputProps()} onChange={onChangeInput} />
+          <input {...inputProps} {...getInputProps()} onChange={onChangeInput} />
         </div>
         <ListBox
           listOptions={groupedOptions}
@@ -64,6 +65,7 @@ CustomAutocomplete.propTypes = {
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onComplete: PropTypes.func,
   onChange: PropTypes.func,
+  inputProps: PropTypes.any,
   options: (props, propName) => {
     if (!props[propName] || !Array.isArray(props[propName])) {
       throw new Error(`${propName} should be an array but got ${typeof props[propName]}`);

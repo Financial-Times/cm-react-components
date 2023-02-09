@@ -23,7 +23,7 @@ export { default as FilterBubble } from './components/CombinedContentSearch/Bubb
 export { default as LogicFilterBubble } from './components/CombinedContentSearch/Bubble/LogicFilterBubble';
 export { default as PreviewBubble } from './components/CombinedContentSearch/Bubble/PreviewBubble';
 export { default as Hint } from './components/CombinedContentSearch/Hint/Hint';
-export { default as HintConcepts } from './components/CombinedContentSearch/Hint/HintConceps';
+export { default as HintConcepts } from './components/CombinedContentSearch/Hint/HintConcepts';
 export { default as HintLogicGroup } from './components/CombinedContentSearch/Hint/HintLogicGroup';
 export { default as ExpressionGroup } from './components/CombinedContentSearch/FilterExpression/ExpressionGroup';
 export {
