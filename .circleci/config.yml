@@ -13,7 +13,7 @@ references:
 
 orbs:
   snyk: snyk/snyk@1.4.0
-  change-api: financial-times/change-api@0.25.0
+  change-api: financial-times/change-api@1
 
 commands:
   test:
