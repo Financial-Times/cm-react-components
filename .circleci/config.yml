@@ -73,3 +73,11 @@ workflows:
             - dockerhub-shared
           filters:
             <<: *filter_all_branches
+  release:
+    jobs:
+      - change-api/change-log:
+          system-code: 'cm-react-components'
+          environment: 'prod'
+          slack-channels: 'cm-changes,ft-changes'
+          filters:
+            <<: *filters_only_main_branch
