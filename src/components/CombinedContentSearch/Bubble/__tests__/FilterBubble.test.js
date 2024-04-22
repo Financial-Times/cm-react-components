@@ -73,7 +73,7 @@ describe('Test FilterBubble component', () => {
     expect(mockOnChangeInput.mock.calls).toHaveLength(1);
 
     expect(mockAutocompleteFinish.mock.calls).toHaveLength(0);
-    fireEvent.blur(input);
+    fireEvent.focusOut(input);
     expect(mockAutocompleteFinish.mock.calls).toHaveLength(1);
     expect(mockAutocompleteFinish).toHaveBeenCalledWith(mockNewValue);
   });
