@@ -14,6 +14,7 @@ references:
 orbs:
   snyk: snyk/snyk@1.4.0
   change-api: financial-times/change-api@1
+  ft-golang-ci: financial-times/golang-ci@1
 
 commands:
   test:
@@ -34,12 +35,6 @@ commands:
       - run:
           name: Build
           command: npm run build
-  snyk:
-    steps:
-      - checkout
-      - snyk/scan:
-          fail-on-issues: true
-          monitor-on-build: false
 
 executors:
   node:
@@ -52,10 +47,6 @@ jobs:
     executor: node
     steps:
       - test
-  snyk:
-    executor: node
-    steps:
-      - snyk
 
 workflows:
   version: 2
@@ -65,11 +56,10 @@ workflows:
           context: dockerhub-shared
           filters:
             <<: *filter_all_branches
-  snyk:
+  snyk-scanning:
     jobs:
-      - snyk:
-          context: 
+      - ft-golang-ci/scan:
+          name: scan-dependencies
+          context:
             - cm-team-snyk
-            - dockerhub-shared
-          filters:
-            <<: *filter_all_branches
+            - cm-team-github
