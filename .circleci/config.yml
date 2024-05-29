@@ -44,7 +44,7 @@ commands:
 executors:
   node:
     docker:
-      - image: circleci/node:14
+      - image: node:lts-alpine3.20
         <<: *docker-auth
 
 jobs:
