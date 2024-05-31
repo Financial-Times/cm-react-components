@@ -68,12 +68,14 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
+    "braces": "^3.0.3",
     "coveralls": "^3.1.1",
     "jest-environment-jsdom": "^29.4.2",
-    "sass": "^1.32.8",
+    "micromatch": "^4.0.6",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.32.8"
   },
   "peerDependencies": {
     "react": "^17.0.1",
