@@ -11,7 +11,7 @@
     "build": "rollup -c",
     "prepare": "npm run build",
     "lint": "eslint src/*.js src/**/*.js src/**/**/*.js",
-    "test": "jest",
+    "test": "jest --maxWorkers=10",
     "coverage": "cat ./coverage/lcov.info | npx coveralls"
   },
   "type": "module",
